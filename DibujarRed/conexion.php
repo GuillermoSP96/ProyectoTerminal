@@ -1,16 +1,16 @@
 <?php
-	$servername = "127.0.0.1";
-	$username = "admin";
-	$password = "password123";
+	$servername = "localhost";
+	$username = "root";
+	$password = "toor";
 	$dbName = "webcucme";
-	
+
 	$conn	= new mysqli($servername, $username, $password, $dbName);
 /*
-	if ($conn->connect_error) 
+	if ($conn->connect_error)
 	{
 		echo "Conexion Fallida";
-	} 
-	else 
+	}
+	else
 	{
 		echo "Conexion Exitosa";
 	}

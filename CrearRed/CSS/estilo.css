@@ -1,3 +1,7 @@
+html{
+  background-image: url("../wallpapers/wallpaper.jpg");
+  background-size: 100% ;
+}
 #centro {
     background-color: white;
     margin: 0px auto;
