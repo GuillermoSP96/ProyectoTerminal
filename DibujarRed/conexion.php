@@ -1,7 +1,7 @@
 <?php
 	$servername = "127.0.0.1";
-	$username = "root";
-	$password = "toor";
+	$username = "admin";
+	$password = "password123";
 	$dbName = "webcucme";
 	
 	$conn	= new mysqli($servername, $username, $password, $dbName);

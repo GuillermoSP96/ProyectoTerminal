@@ -25,7 +25,7 @@
 		 $conn->close();
 		 
 	 ?>
-<html style="background-image: url(/wallpapers/wallpaper.jpg);">
+<html style="background-image: url(../wallpapers/wallpaper.jpg);">
 	<head>
 		<H1 id="titulo" >Tabla de Usuarios</H1>
 		<title>Usuarios</title>

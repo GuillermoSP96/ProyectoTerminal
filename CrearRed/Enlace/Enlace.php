@@ -25,7 +25,7 @@
 		 $conn->close();
 		 
 	 ?>
-	<html style="background-image: url(/wallpapers/wallpaper.jpg);">
+	<html style="background-image: url(../wallpapers/wallpaper.jpg);">
 	<head>
 		<link rel="stylesheet" type="text/css" href="../CSS/estilo.css">
 		<H1 id="titulo" >Tabla de Enlaces</H1>

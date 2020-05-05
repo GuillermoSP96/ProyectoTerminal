@@ -46,8 +46,8 @@
         </div>
         <div>
         <script type="text/javascript">
-            var dispositivos = <? echo  json_encode($dispo,JSON_PRETTY_PRINT); ?>;
-            var enlaces = <? echo  json_encode($enlace,JSON_PRETTY_PRINT); ?>;
+            var dispositivos = <?php echo  json_encode($dispo,JSON_PRETTY_PRINT); ?>;
+            var enlaces = <?php echo  json_encode($enlace,JSON_PRETTY_PRINT); ?>;
             p(dispositivos,enlaces);
         </script>
         </div>
