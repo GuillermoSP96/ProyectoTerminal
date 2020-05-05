@@ -3,7 +3,7 @@
 	$disp2= $_GET['disp2'];
 ?>
 <!DOCTYPE html>
-<html style="background-image: url(/wallpapers/wallpaper.jpg)">
+<html >
 <head>
 	<link rel="stylesheet" href="../CSS/estilo.css">
 	<title>Valida Datos</title>

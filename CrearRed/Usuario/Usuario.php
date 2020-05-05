@@ -23,9 +23,9 @@
 		 }
 		 //Closing the connection to DB
 		 $conn->close();
-		 
+
 	 ?>
-<html style="background-image: url(../wallpapers/wallpaper.jpg);">
+<html>
 	<head>
 		<H1 id="titulo" >Tabla de Usuarios</H1>
 		<title>Usuarios</title>
@@ -33,7 +33,7 @@
 		<link rel="stylesheet" href="../CSS/estilo.css">
 	</head>
 	<body >
-		
+
 			<!--<table border=1 style="text-align:center;margin-left: auto; margin-right:auto; background-color: white;" method='post'>-->
 			<table border=1 id="centro" method='post'>
 				<tr>
@@ -60,6 +60,5 @@
 					}
 				?>
 			</table>
-	</body>	
+	</body>
 </html>
- 

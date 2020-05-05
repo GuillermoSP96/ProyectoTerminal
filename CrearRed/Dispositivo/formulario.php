@@ -33,7 +33,7 @@ if ($result = $conn->query($query)) {
 }*/
 ?>
 <!DOCTYPE HTML>
-<html lang="es" style="background-image: url(/wallpapers/wallpaper.jpg);">
+<html >
 <head>
 	<link rel="stylesheet" href="../CSS/estilo.css">
 	<title>Dispositivos</title>

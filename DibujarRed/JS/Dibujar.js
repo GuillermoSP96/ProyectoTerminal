@@ -16,10 +16,10 @@ function p(dispositivos,enlaces){
         nomD.push(dispositivos[i].nombreD);
         tipoD.push(dispositivos[i].tipo);
         idUsuD.push(parseInt(dispositivos[i].Usuario_idusuario,10));
-    }  
+    }
     for(var i=0;i<enlaces.length;i++){
-        d1.push(parseInt(enlaces[i].Dispositivo_idDispositivo,10));
-        d2.push(parseInt(enlaces[i].Dispositivo_idDispositivo1,10));
+        d1.push(parseInt(enlaces[i].Interface_idinterface,10));
+        d2.push(parseInt(enlaces[i].Interface_idinterface1,10));
     }
     console.log("Valores");
     console.log(idD);
@@ -58,7 +58,7 @@ function draw() {
     // Crear conexión entre nodos
     console.log(tamE);
     edges = [];
-    
+
     for (var i = 0; i < tamE; i++) {
         console.log( 'dispositivo 1: '+d1[i]+ ' dispositivo 2: '+d2[i]);
         //console.log( d2[i]);

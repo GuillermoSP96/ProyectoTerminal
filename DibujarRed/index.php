@@ -31,7 +31,7 @@
         else{
           echo "<p>Empty</p>";
         }
-        //print json_encode($dispo);
+        //print json_encode($enlace);
         //height: 900px;
         $conn->close();
     ?>

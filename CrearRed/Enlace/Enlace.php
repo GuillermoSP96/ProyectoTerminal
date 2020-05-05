@@ -8,12 +8,12 @@
 		//check if there is any data returned by the SQL Query
 		if ($result->num_rows > 0) {
 			//Converting the results into an associative array
-			//idenlace, Dispositivo_idDispositivo, Dispositivo_idDispositivo1
+			//idenlace, Interface_idinterface, Interface_idinterface1
 			 while($row = $result->fetch_assoc()) {
 				 $item = array();
 				 $item['id'] = $row['idenlace'];
-				 $item['disp1'] = $row['Dispositivo_idDispositivo'];
-				 $item['disp2'] = $row['Dispositivo_idDispositivo1'];
+				 $item['disp1'] = $row['Interface_idinterface'];
+				 $item['disp2'] = $row['Interface_idinterface1'];
 			 //append the above created object into the main array.
 			 array_push($arreglo, $item);
 			 }
@@ -23,9 +23,9 @@
 		 }
 		 //Closing the connection to DB
 		 $conn->close();
-		 
+
 	 ?>
-	<html style="background-image: url(../wallpapers/wallpaper.jpg);">
+	<html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="../CSS/estilo.css">
 		<H1 id="titulo" >Tabla de Enlaces</H1>
@@ -59,5 +59,5 @@
 					}
 				?>
 			</table>
-		</body>	
+		</body>
 		</html>

@@ -31,7 +31,7 @@ else{
 	echo "<p>Empty</p>";
 }
 ?>
-<html style="background-image: url(/wallpapers/wallpaper.jpg);">
+<html >
 <head>
 	<link rel="stylesheet" href="../CSS/estilo.css">
 </head>
@@ -54,7 +54,7 @@ else{
 						else
 							echo "<option value=".$tipoDisp[$i].">".$tipoDisp[$i]."</option>";
 						?>
-					</select><br/><br/> 
+					</select><br/><br/>
 				</li>
 				<li>
 					<label for="admin">Administrador:</label>
@@ -67,12 +67,12 @@ else{
 							else
 								echo "<option value=".$usuario[$i]['id'].">".$usuario[$i]['nombre']."</option>";
 							?>
-						</select><br/><br/> 
+						</select><br/><br/>
 					</li>
 					<input type="submit" name="boton" value="Actualizar" style="width: 90px" /><input type="submit" name="boton" value="Cancelar" style="width: 90px; margin-left: 10px"/>
 				</li>
 			</ul>
-			
+
 		</form>
 	</body>
 	</html>

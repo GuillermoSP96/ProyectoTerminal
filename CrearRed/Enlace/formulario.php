@@ -7,7 +7,7 @@ $boton=$_POST['boton'];
 	}
 	if($boton=="Modificar"){
 		$disp1=$_POST['disp1'];
-		$disp2=$_POST['disp2'];	
+		$disp2=$_POST['disp2'];
 	}
 
 require "../conexion.php";
@@ -30,7 +30,7 @@ else{
 }
 ?>
 <!DOCTYPE HTML>
-<html lang="es" style="background-image: url(/wallpapers/wallpaper.jpg);">
+<html >
 <head>
 	<link rel="stylesheet" href="../CSS/estilo.css">
 	<title>Enlaces</title>
@@ -50,7 +50,7 @@ else{
 						else
 							echo "<option value=".$enlaces[$i]['id'].">".$enlaces[$i]['nombre']."</option>";
 					?>
-				</select><br/><br/> 
+				</select><br/><br/>
 			</li>
 			<li>
 				<label for="disp2">Dispositivo 2:</label>
@@ -63,9 +63,9 @@ else{
 						else
 							echo "<option value=".$enlaces[$i]['id'].">".$enlaces[$i]['nombre']."</option>";
 					?>
-				</select><br/><br/> 
+				</select><br/><br/>
 			</li>
-			<button name="boton">Enviar Consulta</button> 
+			<button name="boton">Enviar Consulta</button>
 		</ul>
 	</form>
 </body>

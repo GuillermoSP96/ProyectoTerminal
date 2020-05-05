@@ -98,7 +98,7 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-
+-- Inserciones de prueba
 insert into webcucme.usuario values (null,'admin','admin');
 insert into webcucme.dispositivo values (null,'CUCME','cucme',1);
 insert into webcucme.dispositivo values (null,'R1','router',1);

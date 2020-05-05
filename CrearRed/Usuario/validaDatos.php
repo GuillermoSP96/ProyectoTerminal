@@ -3,7 +3,7 @@
 	$pass= $_GET['pass'];
 ?>
 <!DOCTYPE html>
-<html style="background-image: url(/wallpapers/wallpaper.jpg)">
+<html >
 <head>
 	<link rel="stylesheet" href="../CSS/estilo.css">
 	<title>Valida Datos</title>
@@ -19,7 +19,7 @@
 				<label for="pass">Constraseña:</label>
 				<input style="margin-left: 20px; " type="password" name="pass" value="<?php echo $pass;?>" readonly/><br/><br/>
 			</li>
-			<input type="submit" name="boton" value="Insertar"/> 
+			<input type="submit" name="boton" value="Insertar"/>
 			<input type="submit" name="boton" value="Modificar" formaction="formulario.php"/>
 		</ul>
 	</form>

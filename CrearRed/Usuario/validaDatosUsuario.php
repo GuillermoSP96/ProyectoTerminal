@@ -6,7 +6,7 @@
 		$pass=$_POST['pass'];
 	}
 ?>
-<html style="background-image: url(/wallpapers/wallpaper.jpg);">
+<html >
 	<head>
 		<link rel="stylesheet" href="../CSS/estilo.css">
 	</head>

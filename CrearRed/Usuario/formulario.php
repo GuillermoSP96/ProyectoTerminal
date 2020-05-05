@@ -7,11 +7,11 @@
 	}
 	if($boton=="Modificar"){
 		$nombre=$_POST['nombre'];
-		$pass=$_POST['pass'];	
+		$pass=$_POST['pass'];
 	}
 ?>
 <!DOCTYPE HTML>
-<html lang="es" style="background-image: url(/wallpapers/wallpaper.jpg);">
+<html>
     <head>
     	<link rel="stylesheet" href="../CSS/estilo.css">
         <title>Usuarios</title>

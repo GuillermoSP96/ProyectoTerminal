@@ -9,7 +9,7 @@ if($boton=="Insertar"){
 }
 if($boton=="Modificar"){
 	$nombre=$_POST['nombre'];
-	$ip=$_POST['ip'];	
+	$ip=$_POST['ip'];
 	$estado=$_POST['estado'];
 	$disp=$_POST['disp'];
 }
@@ -44,7 +44,7 @@ else{
 $conn->close();
 ?>
 <!DOCTYPE HTML>
-<html lang="es" style="background-image: url(/wallpapers/wallpaper.jpg);">
+<html >
 <head>
 	<link rel="stylesheet" href="../CSS/estilo.css">
 	<title>Interfaces</title>
@@ -59,7 +59,7 @@ $conn->close();
 			</li>
 			<li>
 				<label for="ip">IPv4:</label>
-				<input style="margin-left: 20px" type="text" name="ip" value="<?=$ip;?>"><br/><br/> 
+				<input style="margin-left: 20px" type="text" name="ip" value="<?=$ip;?>"><br/><br/>
 			</li>
 			<li>
 				<label for="estado">Estado:</label>
@@ -71,7 +71,7 @@ $conn->close();
 						else
 							echo "<option value=".$estados[$i].">".$estados[$i]."</option>";
 					?>
-				</select><br/><br/> 
+				</select><br/><br/>
 			</li>
 			<li>
 				<label for="disp">Dispositivo:</label>
@@ -83,9 +83,9 @@ $conn->close();
 						else
 							echo "<option value=".$dispositivos[$i]['id'].">".$dispositivos[$i]['nombre']."</option>";
 					?>
-					</select><br/><br/> 
+					</select><br/><br/>
 				</li>
-					<button name="boton">Enviar Consulta</button> 
+					<button name="boton">Enviar Consulta</button>
 				</ul>
 			</form>
 		</body>
