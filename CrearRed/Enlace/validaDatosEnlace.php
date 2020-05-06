@@ -2,9 +2,8 @@
 $boton=$_POST['boton'];
 if($boton=="Modificar"){
 	$id=$_POST['id'];
-	$nombre=$_POST['nombre'];
-	$tipo=$_POST['tipo'];
-	$admin=$_POST['admin'];
+	$disp1=$_POST['disp1'];
+	$disp2=$_POST['disp2'];
 }
 if($boton=="Eliminar"){
 	$id=$_POST['id'];
@@ -16,15 +15,17 @@ array_push($tipoDisp, 'cucme');
 
 require "../conexion.php";
 
-$query = "SELECT idusuario, nombreU from usuario;";
+$query = "SELECT * from enlace;";
 
-$usuario = array();
+$enlace = array();
 if ($result = $conn->query($query)) {
 	while($row = $result->fetch_assoc()) {
 		$item = array();
-		$item['id'] = $row['idusuario'];
-		$item['nombre'] = $row['nombreU'];
-		array_push($usuario, $item);
+		//idenlace, Interface_idinterface, Interface_idinterface1
+		$item['id'] = $row['idenlace'];
+		$item['intE1'] = $row['Interface_idinterface'];
+		$item['intE2'] = $row['Interface_idinterface1'];
+		array_push($enlace, $item);
 	}
 }
 else{
@@ -72,7 +73,6 @@ else{
 					<input type="submit" name="boton" value="Actualizar" style="width: 90px" /><input type="submit" name="boton" value="Cancelar" style="width: 90px; margin-left: 10px"/>
 				</li>
 			</ul>
-
 		</form>
 	</body>
 	</html>

@@ -6,8 +6,8 @@ output = ""
 cisco= {
     'device_type': 'cisco_ios',
     'host':   '192.168.23.1',
-    'username': 'admin',
-    'password': 'admin',
+    'username': 'cisco',
+    'password': 'cisco',
     'port' : 22,          # optional, defaults to 22
     'secret': 'secret',     # optional, defaults to ''
 }
@@ -15,7 +15,7 @@ net_connect = ConnectHandler(**cisco)
 def otro(com):
     output = net_connect.send_command(com)
     print(output)
-    
+
 
 
 if __name__=="__main__":

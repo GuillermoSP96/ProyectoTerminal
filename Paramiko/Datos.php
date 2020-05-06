@@ -25,14 +25,23 @@
 	 ?>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Dispositivos</title>
-	<link rel="stylesheet" href="CSS/estilo.css">
+	<title>INTERFACES</title>
 </head>
 <body>
-		<form id="formu"name="formulario" method="post" style="color: white;" action="Datos.php">
+	<?php
+	    $texto='sh ip int br';
+		exec("python conexion.py '".$texto."'",$salida);
+		echo "<pre>";
+		foreach($salida as &$valor)
+		{
+		    echo $valor.'<br/>';
+		}
+		echo "</pre>";
+	?>
+		<form id="formu"name="formulario" method="post" style="color: white;" action="procesaData.php">
 			<ul>
 					<li>
-						<label for="admin">Selección:</label>
+						<label for="admin">Administrador:</label>
 						<!-- <input type="text" name="tipo" value="<?=$tipo;?>"><br/><br/>-->
 						<select name="admin">
 							<?php
@@ -44,7 +53,7 @@
 								?>
 							</select><br/><br/>
 						</li>
-						<input type="submit" name="boton" value="Usar" style="width: 90px" /><input type="submit" name="boton" value="Cancelar" style="width: 90px; margin-left: 10px"/>
+						<input type="submit" name="boton" value="Actualizar" style="width: 90px" /><input type="submit" name="boton" value="Cancelar" style="width: 90px; margin-left: 10px"/>
 					</li>
 				</ul>
 			</form>
