@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html>
+<head
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>INTERFACES</title>
@@ -8,9 +8,8 @@
 <body>
 	<?php
 	  $texto='sh ip int br';
-    $output = exec("python3.6 conexionNetmiko.py '".$texto."'",$salida);
-    echo $output;
-
+		exec("python3.6 conexionNetmiko.py '".$texto."'",$salida);
+		echo "<pre>";
 		foreach($salida as &$valor)
 		{
 		    echo $valor.'<br/>';

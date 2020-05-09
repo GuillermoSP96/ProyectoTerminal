@@ -12,16 +12,10 @@ ssh_client.connect(hostname=host, port=22, username=user,password=passw, look_fo
 channel = ssh_client.get_transport().open_session()
 channel.get_pty()
 channel.settimeout(5)
-def otro(com):
-    #paramiko.util.log_to_file("ssh_conn.log")
-    #com = 'show ip int br'
-    #print('client created')
-    #print('key policy set')
-    #print('client connected')
+def main(com):
     channel.exec_command(com)
     output = channel.recv(1024)
     print(output)
 
 if __name__=="__main__":
-    #main(sys.argv[1])
-    otro(sys.argv[1])
+    main(sys.argv[1])

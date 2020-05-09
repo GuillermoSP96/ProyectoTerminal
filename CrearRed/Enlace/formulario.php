@@ -41,7 +41,6 @@ else{
 		<ul>
 			<li>
 				<label for="disp1">Dispositivo 1:</label>
-				<!-- <input type="text" name="tipo" value="<?=$tipo;?>"><br/><br/>-->
 				<select style="margin-left: 20px" name="disp1">
 					<?php
 					for($i=0;$i<count($enlaces);$i++)
