@@ -8,9 +8,9 @@
 <body>
 	<?php
 	  $texto='sh ip int br';
-    $output = exec("python conexionNetmiko.py '".$texto."'",$salida);
-    echo "¡".$output."hola<br>";
-		echo "<pre>";
+    $output = exec("python3.6 conexionNetmiko.py '".$texto."'",$salida);
+    echo $output;
+
 		foreach($salida as &$valor)
 		{
 		    echo $valor.'<br/>';

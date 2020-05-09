@@ -1,9 +1,13 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3.6
+
+#   para ejecutar desde terminal
+#   python3.6 conexionNetmiko.py "sh ip int br"
+
 import sys
 import os
 from netmiko import ConnectHandler
-output = ""
-cisco= {
+
+cisco = {
     'device_type': 'cisco_ios',
     'host':   '192.168.23.1',
     'username': 'cisco',
@@ -12,11 +16,9 @@ cisco= {
     'secret': 'secret',     # optional, defaults to ''
 }
 net_connect = ConnectHandler(**cisco)
-def otro(com):
+def main(com):
     output = net_connect.send_command(com)
     print(output)
 
-
-
 if __name__=="__main__":
-    otro(sys.argv[1])
+    main(sys.argv[1])
