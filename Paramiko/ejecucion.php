@@ -1,14 +1,18 @@
+<?php
+	$comando= $_GET['comando'];
+	echo $comando;
+?>
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html>
+<head
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>INTERFACES</title>
 </head>
 <body>
 	<?php
-	    $texto='sh ip int br';
-		exec("python conexion.py '".$texto."'",$salida);
+	  #comando='sh ip int br';
+		exec("python conexion.py '".$comando."'",$salida);
 		echo "<pre>";
 		foreach($salida as &$valor)
 		{
@@ -16,5 +20,6 @@
 		}
 		echo "</pre>";
 	?>
+
 </body>
 </html>

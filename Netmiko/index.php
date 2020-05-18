@@ -7,7 +7,7 @@
 </head>
 <body>
 	<?php
-	  $texto='sh ip int br';
+	  $texto='int f0/0';
 		exec("python3.6 conexionNetmiko.py '".$texto."'",$salida);
 		echo "<pre>";
 		foreach($salida as &$valor)
