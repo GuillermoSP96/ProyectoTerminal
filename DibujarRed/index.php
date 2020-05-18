@@ -12,10 +12,8 @@
           }
         }
         else{
-          echo "<p>Empty</p>";
+          echo "<p>no dispositivos</p>";
         }
-        //print json_encode($dispo);
-        //height: 900px;
         $conn->close();
     ?>
     <?php
@@ -29,7 +27,7 @@
           }
         }
         else{
-          echo "<p>Empty</p>";
+          echo "<p>no enlaces</p>";
         }
         //print json_encode($enlace);
         //height: 900px;

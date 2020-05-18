@@ -6,12 +6,9 @@ if($boton=="Modificar"){
 	$tipo=$_POST['tipo'];
 	$admin=$_POST['admin'];
 }
-if($boton=="Eliminar"){
-	$id=$_POST['id'];
-}
 $tipoDisp =  array( );
 array_push($tipoDisp, 'router');
-array_push($tipoDisp, 'switch');
+#array_push($tipoDisp, 'switch');
 array_push($tipoDisp, 'cucme');
 
 require "../conexion.php";

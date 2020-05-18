@@ -10,8 +10,8 @@
 		$query="insert into interface values (null,'".$nombre."','".$ip."','".$estado."',".$disp.");";
 		if($conn->query($query)){
 			header("Location: Interface.php");
-		} 
-		else 
+		}
+		else
 		{
 			echo "Error: ".$conn->error;
 		}
@@ -19,19 +19,17 @@
 	}
 	if($boton=="Actualizar")
 	{
-		//$query="update dispositivo set Nombre='".$nombre."',Edad=".$edad.",Genero=".$gen.", Nivel_Estudios=".$nivEst.", EDO_CIVIL_idEDO_CIVIL=".$idEC.", Pais_Nacimiento=".$idpN.", Pais_Origen=".$idpO." where idPERSONA=".$id.";";
-		
-		$query ="update dispositivo set nombreD='".$nombre."',tipo ='".$tipo."',Usuario_idusuario=".$admin." where idDispositivo=".$id.";";
+		$query ="update interface set nombreI='".$nombre."',ip ='".$ip."',estado='".$estado."',Dispositivo_idDispositivo=".$disp." where idinterface=".$id.";";
 		if($conn->query($query)){
-			header("Location: Dispositivo.php");
-		} 
-		else 
+			header("Location: Interface.php");
+		}
+		else
 		{
 			echo "Error: ".$conn->error;
 		}
 		$conn->close();
 	}
-	if($boton=="Modificar"){	
+	if($boton=="Modificar"){
 		header("Location: formulario.php");
 		$conn->close();
 	}
@@ -41,8 +39,8 @@
 		header("Location: formulario.php");
 		$conn->close();
 	}
-	if($boton=="Cancelar"){	
-		header("Location: Dispositivo.php");
+	if($boton=="Cancelar"){
+		header("Location: Interface.php");
 		$conn->close();
 	}
 ?>

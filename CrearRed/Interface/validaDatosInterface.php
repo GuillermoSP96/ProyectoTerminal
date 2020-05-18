@@ -3,33 +3,31 @@ $boton=$_POST['boton'];
 if($boton=="Modificar"){
 	$id=$_POST['id'];
 	$nombre=$_POST['nombre'];
-	$tipo=$_POST['tipo'];
-	$admin=$_POST['admin'];
+	$ip=$_POST['ip'];
+	$estado=$_POST['estado'];
+	$disp=$_POST['disp'];
 }
-if($boton=="Eliminar"){
-	$id=$_POST['id'];
-}
-$tipoDisp =  array( );
-array_push($tipoDisp, 'router');
-array_push($tipoDisp, 'switch');
-array_push($tipoDisp, 'cucme');
-
+$estados =  array( );
+array_push($estados, 'up');
+array_push($estados, 'down');
 require "../conexion.php";
 
-$query = "SELECT idusuario, nombreU from usuario;";
+$query = "SELECT idDispositivo, nombreD from dispositivo;";
+$result = $conn->query($query);
+$dispositivos = array();
 
-$usuario = array();
-if ($result = $conn->query($query)) {
-	while($row = $result->fetch_assoc()) {
-		$item = array();
-		$item['id'] = $row['idusuario'];
-		$item['nombre'] = $row['nombreU'];
-		array_push($usuario, $item);
+if ($result->num_rows > 0) {
+		while($row = $result->fetch_assoc()) {
+			$item = array();
+			$item['id'] = $row['idDispositivo'];
+			$item['nombre'] = $row['nombreD'];
+			array_push($dispositivos, $item);
+		}
 	}
-}
 else{
 	echo "<p>Empty</p>";
 }
+$conn->close();
 ?>
 <html >
 <head>
@@ -41,31 +39,33 @@ else{
 			<input type="hidden" name="id" value="<?=$id;?>" /><br/>
 			<li>
 				<label for="name">Nombre:</label>
-				<input style="margin-left: 20px" type="text"   name="nombre" value="<?=$nombre;?>" /><br/><br/>
+				<input style="margin-left: 20px" type="text" name="nombre" value="<?=$nombre;?>" /><br/><br/>
 			</li>
 			<li>
-				<label for="tipo">Tipo:</label>
-				<!-- <input type="text" name="tipo" value="<?=$tipo;?>"><br/><br/>-->
-				<select style="margin-left: 20px" name="tipo">
+				<label for="name">IPv4:</label>
+				<input style="margin-left: 20px" type="text" name="ip" value="<?=$ip;?>" /><br/><br/>
+			</li>
+			<li>
+				<label for="tipo">Estado:</label>
+				<select style="margin-left: 20px" name="estado">
 					<?php
-					for($i=0;$i<count($tipoDisp);$i++)
-						if($tipoDisp[$i]==$tipo)
-							echo "<option value=".$tipoDisp[$i]." selected>".$tipoDisp[$i]."</option>";
+					for($i=0;$i<count($estados);$i++)
+						if($estados[$i]==$estado)
+							echo "<option value=".$estados[$i]." selected>".$estados[$i]."</option>";
 						else
-							echo "<option value=".$tipoDisp[$i].">".$tipoDisp[$i]."</option>";
+							echo "<option value=".$estados[$i].">".$estados[$i]."</option>";
 						?>
 					</select><br/><br/>
 				</li>
 				<li>
-					<label for="admin">Administrador:</label>
-					<!-- <input type="text" name="tipo" value="<?=$tipo;?>"><br/><br/>-->
-					<select style="margin-left: 20px" name="admin">
+					<label for="admin">Dispositivo:</label>
+					<select style="margin-left: 20px" name="disp">
 						<?php
-						for($i=0;$i<count($usuario);$i++)
-							if($usuario[$i]['id']==$admin)
-								echo "<option value=".$usuario[$i]['id']." selected>".$usuario[$i]['nombre']."</option>";
+						for($i=0;$i<count($dispositivos);$i++)
+							if($dispositivos[$i]['id']==$disp)
+								echo "<option value=".$dispositivos[$i]['id']." selected>".$dispositivos[$i]['nombre']."</option>";
 							else
-								echo "<option value=".$usuario[$i]['id'].">".$usuario[$i]['nombre']."</option>";
+								echo "<option value=".$dispositivos[$i]['id'].">".$dispositivos[$i]['nombre']."</option>";
 							?>
 						</select><br/><br/>
 					</li>

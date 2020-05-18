@@ -101,7 +101,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- Inserciones de prueba
 insert into webcucme.usuario values (null,'admin','admin');
 insert into webcucme.dispositivo values (null,'CUCME','cucme',1);
-insert into webcucme.dispositivo values (null,'R1','router',1);
-insert into webcucme.interface values (null,'f 0/0', '192.168.23.1', 'up', 1);
-insert into webcucme.interface values (null,'f 0/0', '192.168.23.2', 'up', 2);
-insert into webcucme.enlace values (null, 1,2);
+insert into webcucme.interface values (null,'f 0/1', '192.168.23.1', 'up', 1);
+insert into webcucme.interface values (null,'f 0/0.10', '192.168.1.1', 'up', 1);
+insert into webcucme.interface values (null,'f 0/0.20', '192.168.2.1', 'up', 1);
+
