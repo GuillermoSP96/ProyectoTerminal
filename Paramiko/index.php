@@ -1,5 +1,5 @@
 <?php
-require "conexion.php";
+require "conect/conexion.php";
 
 $query = "SELECT * from dispositivo;";
 
@@ -24,7 +24,7 @@ $conn->close();
 <html >
 <head>
 	<link rel="stylesheet" href="CSS/estilo.css">
-	<title>Interfaces</title>
+	<title>Paramiko</title>
 	<meta charset="UTF-8"/>
 </head>
 <body>

@@ -1,8 +1,4 @@
-#! /usr/bin/env python3.6
-
-#   para ejecutar desde terminal
-#   python3.6 conexionNetmiko.py "sh ip int br"
-
+#! /usr/bin/env python
 import sys
 import os
 from netmiko import ConnectHandler
@@ -16,8 +12,8 @@ cisco = {
     'port': 22,  # optional, defaults to 22
     'secret': 'cisco',  # optional, defaults to ''
 }
-net_connect = ConnectHandler(**cisco)
-
+connection = ConnectHandler(**cisco)
+connection.enable()
 # Alternativamente, podría llamar directamente a la función ConnectHandler
 # y no usar un diccionario (como se indica a continuación):
 #net_connect2 = ConnectHandler(device_type='cisco_ios', host='cisco.domain.com',
@@ -26,9 +22,9 @@ net_connect = ConnectHandler(**cisco)
 
 def main(com):
     config_commands = ['sh ip int br']
-    output = net_connect.send_config_set(com)
-    #output = net_connect.send_command(command)
-    #output = net_connect.find_prompt()
+    #output = connection.send_config_set(com)
+    output = connection.send_command(com)
+    #output = connection.find_prompt()
     print(output)
 
 

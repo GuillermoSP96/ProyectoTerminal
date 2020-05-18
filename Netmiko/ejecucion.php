@@ -12,7 +12,7 @@
 <body>
 	<?php
 	  #comando='sh ip int br';
-		exec("python conect/conexion.py '".$comando."'",$salida);
+		exec("python3.6 conect/conexionN.py '".$comando."'",$salida);
 		echo "<pre>";
 		foreach($salida as &$valor)
 		{
