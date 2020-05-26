@@ -11,7 +11,7 @@
 	$contraseniassh= $_POST['contraseniassh'];
 	$contraseniaenable= $_POST['contraseniaenable'];
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html >
 	<head>
 		<link rel="stylesheet" href="../CSS/estilo.css">
