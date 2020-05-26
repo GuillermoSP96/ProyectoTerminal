@@ -16,8 +16,7 @@ connection = ConnectHandler(**cisco)
 connection.enable()
 # Alternativamente, podría llamar directamente a la función ConnectHandler
 # y no usar un diccionario (como se indica a continuación):
-#net_connect2 = ConnectHandler(device_type='cisco_ios', host='cisco.domain.com',
-# username='admin', password='cisco123')
+#net_connect2 = ConnectHandler(device_type='cisco_ios', host='cisco.domain.com',username='admin', password='cisco123')
 
 
 def main(com):

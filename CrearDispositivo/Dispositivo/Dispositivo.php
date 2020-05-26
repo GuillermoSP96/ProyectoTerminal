@@ -26,11 +26,11 @@
 				</li>
 				<li>
 					<label for="name">Contraseña SSH:</label>
-					<input type="password" name="contraseniassh" value="<?=$contraseniassh;?>"><br/><br/>
+					<input type="password" name="passSSH" value="<?=$passSSH;?>"><br/><br/>
 				</li>
 				<li>
 					<label for="name">Contraseña Enable:</label>
-					<input type="password" name="contraseniaenable" value="<?=$contraseniaenable;?>"><br/><br/>
+					<input type="password" name="passEN" value="<?=$passEN;?>"><br/><br/>
 				</li>
 				<button name="boton">Empezar</button>
 			</ul>
