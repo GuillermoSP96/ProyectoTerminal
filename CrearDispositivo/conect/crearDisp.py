@@ -27,6 +27,5 @@ def main(config):
     #output = connection.find_prompt()
     print(output)
 
-
 if __name__ == "__main__":
     main(sys.argv[1])

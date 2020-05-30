@@ -1,3 +1,6 @@
+SET @lower_case_table_names = 1;
+
+
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -104,4 +107,3 @@ insert into webcucme.dispositivo values (null,'CUCME','cucme',1);
 insert into webcucme.interface values (null,'f 0/1', '192.168.23.1', 'up', 1);
 insert into webcucme.interface values (null,'f 0/0.10', '192.168.1.1', 'up', 1);
 insert into webcucme.interface values (null,'f 0/0.20', '192.168.2.1', 'up', 1);
-

@@ -21,7 +21,7 @@
 		<?php
 
 		$cisco = new stdClass();
-		$cisco->nombre = [$nombre,'hola','como'];
+		$cisco->nombre = $nombre;
 		$cisco->ip = $ipv4;
 		$cisco->puerto = $pssh;
 		$cisco->usuario = $usuario;
