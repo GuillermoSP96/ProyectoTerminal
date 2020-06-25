@@ -14,7 +14,7 @@ cisco = {
     'secret': 'cisco',  # optional, defaults to ''
 }
 connection = ConnectHandler(**cisco)
-connection.enable()
+#connection.enable()
 # Alternativamente, podría llamar directamente a la función ConnectHandler
 # y no usar un diccionario (como se indica a continuación):
 #net_connect2 = ConnectHandler(device_type='cisco_ios', host='cisco.domain.com',username='admin', password='cisco123')
@@ -27,9 +27,8 @@ def main():
     salida = json.dumps(output)
     #output = connection.find_prompt()
     #print(output)
-    with open("data_file.json", "w") as write_file:
+    with open("data.json", "w") as write_file:
         json.dump(salida, write_file)
-
 
 if __name__ == "__main__":
     main()
