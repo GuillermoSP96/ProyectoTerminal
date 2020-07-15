@@ -1,0 +1,9 @@
+{
+    "clients": [
+        {
+            "giraffes": 23,
+            "orangutans": 24,
+            "monkeys": 29
+        }
+    ]
+}

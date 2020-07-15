@@ -1,12 +1,4 @@
 <?php
-  function json_decode_nice($json, $assoc = TRUE){
-    $json = str_replace(array("\n","\r"),"\\n",$json);
-    $json = preg_replace('/([{,]+)(\s*)([^"]+?)\s*:/','$1"$3":',$json);
-    $json = preg_replace('/(,)\s*}$/','}',$json);
-    return json_decode($json,$assoc);
-  }
-?>
-<?php
   function read_json($json){
   $data = file_get_contents($json);
   $products = json_decode($data, true);
