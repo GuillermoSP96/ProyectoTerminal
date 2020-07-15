@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 """
 Reference collector script for NetFlow v1, v5, and v9 Python package.
@@ -18,10 +18,9 @@ import threading
 import time
 from collections import namedtuple
 
-from ipfix import IPFIXTemplateNotRecognized
-from utils import UnknownExportVersion
-from utils import parse_packet
-from v9 import V9TemplateNotRecognized
+from netflow.ipfix import IPFIXTemplateNotRecognized
+from netflow.utils import UnknownExportVersion, parse_packet
+from netflow.v9 import V9TemplateNotRecognized
 
 RawPacket = namedtuple('RawPacket', ['ts', 'client', 'data'])
 ParsedPacket = namedtuple('ParsedPacket', ['ts', 'client', 'export'])
@@ -190,7 +189,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="A sample netflow collector.")
     parser.add_argument("--host", type=str, default="0.0.0.0",
                         help="collector listening address")
-    parser.add_argument("--port", "-p", type=int, default=9200,
+    parser.add_argument("--port", "-p", type=int, default=2055,
                         help="collector listener port")
     parser.add_argument("--file", "-o", type=str, dest="output_file",
                         default="{}.gz".format(int(time.time())),
@@ -225,8 +224,11 @@ if __name__ == "__main__":
                 "flows": [flow.data for flow in export.flows]}
             }
             line = json.dumps(entry).encode() + b"\n"  # byte encoded line
-            with gzip.open(args.output_file, "ab") as fh:  # open as append, not reading the whole file
-                fh.write(line)
+            print(line)
+            with open('data.json', 'w') as file:
+                json.dump(entry, file, indent=4)
+            #with gzip.open(args.output_file, "ab") as fh:  # open as append, not reading the whole file
+            #    fh.write(line)
     except KeyboardInterrupt:
         logger.info("Received KeyboardInterrupt, passing through")
         pass

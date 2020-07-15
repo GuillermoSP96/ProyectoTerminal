@@ -10,10 +10,10 @@ Licensed under MIT License. See LICENSE.
 import struct
 from typing import Union
 
-from ipfix import IPFIXExportPacket
-from v1 import V1ExportPacket
-from v5 import V5ExportPacket
-from v9 import V9ExportPacket
+from .ipfix import IPFIXExportPacket
+from .v1 import V1ExportPacket
+from .v5 import V5ExportPacket
+from .v9 import V9ExportPacket
 
 
 class UnknownExportVersion(Exception):
