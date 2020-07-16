@@ -40,8 +40,8 @@
     <div id="chart"></div>
     <script>
     var trace1 = {
-      x: $IPV4_SRC_ADDR,
-      y: $IPV4_DST_ADDR,
+      x: [1, 2, 3, 4, 5],
+      y: [1, 2, 3, 4, 5],
       type: 'lines',
       name:'Datos 1',
       line:{ width: 5, color:'red',dash:'solid'},
