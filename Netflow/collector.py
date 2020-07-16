@@ -218,13 +218,10 @@ if __name__ == "__main__":
         # This also means that the files have to be handled differently, because they are gzipped and not formatted as
         # one single big JSON dump, but rather many little JSON dumps, separated by line breaks.
         for ts, client, export in get_export_packets(args.host, args.port):
-            entry = {ts: {
-                "client": client,
-                "header": export.header.to_dict(),
-                "flows": [flow.data for flow in export.flows]}
-            }
+            entry = [flow.data for flow in export.flows]
+
             line = json.dumps(entry).encode() + b"\n"  # byte encoded line
-            print(line)
+            #print(line)
             with open('data.json', 'w') as file:
                 json.dump(entry, file, indent=4)
             #with gzip.open(args.output_file, "ab") as fh:  # open as append, not reading the whole file

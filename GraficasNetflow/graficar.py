@@ -1,15 +1,18 @@
 import plotly
 import json
-with open('data.json') as file:
+
+with open('data0.json') as file:
     data = json.load(file)
-    for client in data['clients']:
-        print('giraffes:', client['giraffes'])
-        print('orangutans:', client['orangutans'])
-        print('monkeys:', client['monkeys'])
+    for flows in data['flows']:
+        print('IPV4_SRC_ADDR:', flows['IPV4_SRC_ADDR'])
+        print('IPV4_DST_ADDR:', flows['IPV4_DST_ADDR'])
+        print('IN_BYTES:', flows['IN_BYTES'])
         print('')
+
 # create a simple plot
-bar = plotly.graph_objs.Bar(x=['giraffes', 'orangutans', 'monkeys'],
-                            y=[client['giraffes'], client['orangutans'],client['monkeys']])
+bar = plotly.graph_objs.Scatter(x=[flows['IPV4_SRC_ADDR']],y=[flows['IN_BYTES']],mode='lines+markers',name='lines+markers')
+
+
 layout = plotly.graph_objs.Layout()
 fig = plotly.graph_objs.Figure([bar], layout)
 
