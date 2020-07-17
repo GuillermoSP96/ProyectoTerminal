@@ -1,7 +1,7 @@
 import plotly
 import json
 
-with open('data0.json') as file:
+with open('data.json') as file:
     data = json.load(file)
     for flows in data['flows']:
         print('IPV4_SRC_ADDR:', flows['IPV4_SRC_ADDR'])
