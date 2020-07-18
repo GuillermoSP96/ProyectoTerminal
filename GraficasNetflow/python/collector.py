@@ -8,7 +8,7 @@ Copyright 2016-2020 Dominik Pataky <software+pynetflow@dpataky.eu>
 Licensed under MIT License. See LICENSE.
 """
 import argparse
-import gzip
+#import gzip
 import json
 import logging
 import queue
@@ -217,12 +217,19 @@ if __name__ == "__main__":
         # 3. the disk usage of files with JSON and its full strings as keys is reduced by using gzipped files
         # This also means that the files have to be handled differently, because they are gzipped and not formatted as
         # one single big JSON dump, but rather many little JSON dumps, separated by line breaks.
+        #for ts, client, export in get_export_packets(args.host, args.port):
+        #    entry = f[flow.data for flow in export.flows]
         for ts, client, export in get_export_packets(args.host, args.port):
-            entry = [flow.data for flow in export.flows]
+            entry = {"Netflow": {
+                "client": client,
+                "header": export.header.to_dict(),
+                "flows": [flow.data for flow in export.flows]}
+            }
+            line = json.dumps(entry).encode() + b"\n"  # byte encoded line
 
             line = json.dumps(entry).encode() + b"\n"  # byte encoded line
             #print(line)
-            with open('data.json', 'w') as file:
+            with open('../JSON/data.json', 'w') as file:
                 json.dump(entry, file, indent=4)
             #with gzip.open(args.output_file, "ab") as fh:  # open as append, not reading the whole file
             #    fh.write(line)

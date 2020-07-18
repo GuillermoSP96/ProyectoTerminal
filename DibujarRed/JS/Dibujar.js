@@ -11,7 +11,12 @@ var tamE=null;
 var d1 = [];
 var d2 = [];
 function p(dispositivos,enlaces){
-    for(var i=0;i<dispositivos.length;i++){
+    var tamDis = dispositivos.length;
+    console.log("tamaño de dispositivos");
+    console.log(tamDis);
+    console.log(typeof tamDis);
+    console.log("tamaño de dispositivos");
+    for(var i=0;i<tamDis;i++){
         idD.push(parseInt(dispositivos[i].idDispositivo,10));
         nomD.push(dispositivos[i].nombreD);
         tipoD.push(dispositivos[i].tipo);
@@ -21,19 +26,19 @@ function p(dispositivos,enlaces){
         d1.push(parseInt(enlaces[i].Interface_idinterface,10));
         d2.push(parseInt(enlaces[i].Interface_idinterface1,10));
     }
-    console.log("Valores");
+    /*console.log("Valores");
     console.log(idD);
     console.log(nomD);
     console.log(tipoD);
     console.log(idUsuD);
     console.log(d1);
-    console.log(d2);
+    console.log(d2);*/
     tamD=dispositivos.length;
     tamE=enlaces.length;
-    console.log(tamD);
+    /*console.log(tamD);
     console.log(tamE);
     console.log("fin de valores");
-
+*/
     //alert(dispositivos.length);
 }
 // Se llama cuando se carga la API de visualización.

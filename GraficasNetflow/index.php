@@ -11,10 +11,12 @@
     <div id="chart"></div>
 
     <script>
-    var json = readTextFile("data.json");
-    console.log(json);
+    var json = readTextFile("JSON/data.json");
+    var my_json = JSON.parse(json);
+
+    //console.log(json);
     //var dispositivos = <?php #echo  json_encode($dispo,JSON_PRETTY_PRINT); ?>;
-      graficar();
+      graficar(my_json);
     </script>
   </body>
 </html>
