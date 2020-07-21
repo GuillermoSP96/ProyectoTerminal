@@ -29,7 +29,8 @@ function graficar(json) {
   for (var i = 0; i < pkts.length; i++) {
     arregloY2.push(parseInt(pkts[i]));
   }
-  graficas(arregloX, arregloY1, arregloY2);
+  g1(arregloX, arregloY1);
+  g2(arregloX, arregloY2);
   return "bien";
 }
 
@@ -52,34 +53,30 @@ function readTextFile(file) {
   rawFile.send(null);
   return sal;
 }
-
-function graficas(arregloX, arregloY1, arregloY2) {
+function g1(arregloX, arregloY1) {
   var trace1 = {
     x: arregloX,
     y: arregloY1,
     type: 'scatter',
     name: 'Bytes'
   };
-
-  var trace2 = {
+  var data = [trace1];
+  Plotly.newPlot('myDiv1', data, {
+    title: "Graficas de Bytes transmitidos"
+  });
+}
+function g2(arregloX, arregloY2) {
+  var trace1 = {
     x: arregloX,
     y: arregloY2,
-    xaxis: 'x2',
-    yaxis: 'y2',
     type: 'scatter',
-    name: 'Packets'
-  };
-
-  var data = [trace1, trace2];
-
-  var layout = {
-    grid: {
-      rows: 2,
-      columns: 1,
-      pattern: 'independent',
-      roworder: 'top to bottom'
+    name: 'Packets',
+    line: {
+    color: "red"
     }
   };
-
-  Plotly.newPlot('myDiv', data, layout);
+  var data = [trace1];
+  Plotly.newPlot('myDiv2', data, {
+    title: "Graficas de Packets transmitidos"
+  });
 }

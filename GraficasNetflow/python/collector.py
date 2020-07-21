@@ -235,7 +235,6 @@ if __name__ == "__main__":
                 json.dump(entry, file, indent=4)
             #with gzip.open(args.output_file, "ab") as fh:  # open as append, not reading the whole file
             #    fh.write(line)
-            print("fin del for\n\n")
     except KeyboardInterrupt:
         logger.info("Received KeyboardInterrupt, passing through")
         pass
