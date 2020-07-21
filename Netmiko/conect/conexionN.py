@@ -20,7 +20,7 @@ connection.enable()
 
 
 def main(com):
-    config_commands = ['sh ip int br']
+    #config_commands = ['sh ip int br']
     #output = connection.send_config_set(com)
     output = connection.send_command(com)
     #output = connection.find_prompt()

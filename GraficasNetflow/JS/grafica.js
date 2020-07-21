@@ -10,16 +10,16 @@ function graficar(json) {
     ip_dst.push(json['Netflow']['flows'][i]['IPV4_DST_ADDR']);
     pkts.push(parseInt(json['Netflow']['flows'][i]['IN_BYTES'], 10));
     bytes.push(parseInt(json['Netflow']['flows'][i]['IN_PKTS'], 10));
-    console.log(json['Netflow']['flows'][i]['IPV4_SRC_ADDR']);
-    console.log(json['Netflow']['flows'][i]['IPV4_DST_ADDR']);
-    console.log(json['Netflow']['flows'][i]['IN_BYTES']);
-    console.log(json['Netflow']['flows'][i]['IN_PKTS']);
+    //console.log(json['Netflow']['flows'][i]['IPV4_SRC_ADDR']);
+    //console.log(json['Netflow']['flows'][i]['IPV4_DST_ADDR']);
+    //console.log(json['Netflow']['flows'][i]['IN_BYTES']);
+    //console.log(json['Netflow']['flows'][i]['IN_PKTS']);
   }
   var arregloX = [];
   var arregloY1 = [];
   var arregloY2 = [];
-  console.log("tamaño: ".concat(json['Netflow']['flows'].length));
-  console.log(json['Netflow']['flows']);
+  //console.log("tamaño: ".concat(json['Netflow']['flows'].length));
+  //console.log(json['Netflow']['flows']);
   for (var i = 1; i < json['Netflow']['flows'].length; i++) {
     arregloX.push(i);
   }
