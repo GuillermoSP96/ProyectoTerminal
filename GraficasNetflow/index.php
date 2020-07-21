@@ -9,6 +9,7 @@
   <body>
     <a href="javascript:location.reload()">Actualizar página</a>
     <div id="chart"></div>
+    <div id="myDiv"></div>
 
     <script>
     var json = readTextFile("JSON/data.json");
