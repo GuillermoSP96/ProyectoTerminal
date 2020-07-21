@@ -219,20 +219,23 @@ if __name__ == "__main__":
         # one single big JSON dump, but rather many little JSON dumps, separated by line breaks.
         #for ts, client, export in get_export_packets(args.host, args.port):
         #    entry = f[flow.data for flow in export.flows]
+        aux = []
         for ts, client, export in get_export_packets(args.host, args.port):
+            aux += [flow.data for flow in export.flows]
             entry = {"Netflow": {
                 "client": client,
                 "header": export.header.to_dict(),
-                "flows": [flow.data for flow in export.flows]}
+                "flows": aux }
+                #"flows": [flow.data for flow in export.flows]}
             }
             line = json.dumps(entry).encode() + b"\n"  # byte encoded line
 
-            line = json.dumps(entry).encode() + b"\n"  # byte encoded line
             #print(line)
             with open('../JSON/data.json', 'w') as file:
                 json.dump(entry, file, indent=4)
             #with gzip.open(args.output_file, "ab") as fh:  # open as append, not reading the whole file
             #    fh.write(line)
+            print("fin del for\n\n")
     except KeyboardInterrupt:
         logger.info("Received KeyboardInterrupt, passing through")
         pass

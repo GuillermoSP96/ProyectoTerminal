@@ -1,6 +1,6 @@
 <?php
-header("Refresh: 5; URL='index.php'");
- ?>
+  header("Refresh: 5; URL='index.php'");
+?>
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
   <head>

@@ -18,7 +18,8 @@ function graficar(json) {
   var arregloX = [];
   var arregloY1 = [];
   var arregloY2 = [];
-  //console.log(json['Netflow']['flows'].length);
+  console.log("tamaño: ".concat(json['Netflow']['flows'].length));
+  console.log(json['Netflow']['flows']);
   for (var i = 1; i < json['Netflow']['flows'].length; i++) {
     arregloX.push(i);
   }
@@ -28,7 +29,6 @@ function graficar(json) {
   for (var i = 0; i < pkts.length; i++) {
     arregloY2.push(parseInt(pkts[i]));
   }
-
   graficas(arregloX, arregloY1, arregloY2);
   return "bien";
 }
