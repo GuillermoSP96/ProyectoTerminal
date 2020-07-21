@@ -28,8 +28,8 @@ function graficar(json) {
   for (var i = 0; i < pkts.length; i++) {
     arregloY2.push(parseInt(pkts[i]));
   }
-  sirve(arregloX, arregloY1, arregloY2);
-  prueba();
+
+  graficas(arregloX, arregloY1, arregloY2);
   return "bien";
 }
 
@@ -37,7 +37,6 @@ function graficar(json) {
  * file : string "ruta del archivo que se desea leer"
  *
  */
-
 function readTextFile(file) {
   var rawFile = new XMLHttpRequest();
   var sal = "";
@@ -46,7 +45,6 @@ function readTextFile(file) {
     if (rawFile.readyState === 4) {
       if (rawFile.status === 200 || rawFile.status == 0) {
         var allText = rawFile.responseText;
-        //alert(allText);
         sal = allText;
       }
     }
@@ -55,77 +53,33 @@ function readTextFile(file) {
   return sal;
 }
 
-function prueba() {
+function graficas(arregloX, arregloY1, arregloY2) {
   var trace1 = {
-    x: [0, 1, 2],
-    y: [10, 11, 12],
-    type: 'scatter'
+    x: arregloX,
+    y: arregloY1,
+    type: 'scatter',
+    name: 'Bytes'
   };
 
   var trace2 = {
-    x: [2, 3, 4],
-    y: [100, 110, 120],
+    x: arregloX,
+    y: arregloY2,
     xaxis: 'x2',
     yaxis: 'y2',
-    type: 'scatter'
+    type: 'scatter',
+    name: 'Packets'
   };
 
-  var trace3 = {
-    x: [3, 4, 5],
-    y: [1000, 1100, 1200],
-    xaxis: 'x3',
-    yaxis: 'y3',
-    type: 'scatter'
-  };
-
-  var data = [trace1, trace2, trace3];
+  var data = [trace1, trace2];
 
   var layout = {
     grid: {
-      rows: 3,
+      rows: 2,
       columns: 1,
       pattern: 'independent',
-      roworder: 'bottom to top'
+      roworder: 'top to bottom'
     }
   };
 
   Plotly.newPlot('myDiv', data, layout);
-}
-
-function sirve(arregloX, arregloY1, arregloY2) {
-  var trace1 = {
-    x: arregloX,
-    y: arregloY1,
-    type: 'lines',
-    name: 'Bytes',
-    line: {
-      width: 5,
-      color: 'blue',
-      dash: 'solid'
-    },
-    marker: {
-      size: 10,
-      color: 'blue'
-    }
-  };
-  var trace2 = {
-    x: arregloX,
-    y: arregloY2,
-    type: 'lines',
-    name: 'Packets',
-    line: {
-      width: 5,
-      color: 'red',
-      dash: 'solid'
-    },
-    marker: {
-      size: 10,
-      color: 'red'
-    }
-  };
-  var data = [trace1, trace2];
-  Plotly.newPlot('chart', data, {
-    title: 'Monitoreo de red (bytes)'
-  });
-
 }
