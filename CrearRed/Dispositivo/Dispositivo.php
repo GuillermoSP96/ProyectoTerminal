@@ -34,6 +34,11 @@
 		<meta charset="UTF-8"/>
 	</head>
 	<body style="">
+		<button>
+			<a href="/">
+				Inicio
+			</a>
+		</button>
 		<table border=1 id="centro" method='post'>
 			<tr>
 				<th>ID</th><th>Nommbre</th><th>tipo</th>

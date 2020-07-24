@@ -40,6 +40,11 @@
         <link href="CSS/font-awesome.min.css" rel="stylesheet"></link>
     </head>
     <body onload="draw()">
+        <button>
+  			  <a href="/">
+  				  Inicio
+  			  </a>
+  		  </button>
         <div id="mynetwork">
         </div>
         <div>

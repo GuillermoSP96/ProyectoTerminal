@@ -6,7 +6,14 @@
     <script src="JS/plotly-latest.min.js"></script>
     <script src="JS/grafica.js" type="text/javascript"></script>
   <body>
-    <a href="javascript:location.reload()">Actualizar página</a>
+    <button>
+      <a href="/">
+        Inicio
+      </a>
+    </button>
+    <button>
+      <a href="javascript:location.reload()">Actualizar página</a>
+    </button>
     <center><h1>Monitoreo de la red</h1></center>
     <div id="myDiv1"></div>
     <div id="myDiv2"></div>

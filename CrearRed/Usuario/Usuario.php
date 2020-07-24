@@ -33,6 +33,11 @@
 		<link rel="stylesheet" href="../CSS/estilo.css">
 	</head>
 	<body >
+		<button>
+			<a href="/">
+				Inicio
+			</a>
+		</button>
 
 			<!--<table border=1 style="text-align:center;margin-left: auto; margin-right:auto; background-color: white;" method='post'>-->
 			<table border=1 id="centro" method='post'>
