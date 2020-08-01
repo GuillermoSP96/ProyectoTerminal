@@ -11,7 +11,6 @@
 </head>
 <body>
 	<?php
-	  #comando='sh ip int br';
 		exec("python conect/conexion.py '".$comando."'",$salida);
 		echo "<pre>";
 		foreach($salida as &$valor)
