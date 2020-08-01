@@ -15,17 +15,20 @@ cisco = {
 #connection.enable()
 
 #output = connection.find_prompt()
-
-if __name__ == "__main__":
+def ejecucion():
     com = sys.argv[1]
     modo=sys.argv[2]
+    #config_commands = ['int f0/1','int f1/0']
     #with ConnectHandler(** cisco) as net_connect:
     net_connect = ConnectHandler(**cisco)
     net_connect.enable()
     if modo=="configuracion":
-        output = connection.send_config_set(com)
+        output = net_connect.send_config_set(com.split("ñ"))
         print(output)
+        
     else:
         output = net_connect.send_command(com)
         print(output)
+
 #    main()
+ejecucion()

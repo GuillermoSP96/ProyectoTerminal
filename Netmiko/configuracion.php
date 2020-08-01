@@ -1,8 +1,10 @@
-<?php
-$modo = array();
-array_push($modo, 'configuracion');
-array_push($modo, 'consulta');
 
+<?php
+	$modos = array();
+	array_push($modos, 'configuracion');
+	array_push($modos, 'consulta');
+	$comando= $_GET['comando'];
+	$modo= $_GET['modo'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,7 +15,9 @@ array_push($modo, 'consulta');
 	<title>INTERFACES</title>
 </head>
 <body>
-	<form id="formu"name="formulario" method="get" style="color: white;" action="ejecucion.php">
+	<div class="wrapper">
+	<div class="box box1">
+	<form id="formu"name="formulario" method="get" style="color: white;" action="configuracion.php">
 		<ul>
 			<li>
 				<label for="name">Comando:</label>
@@ -23,11 +27,11 @@ array_push($modo, 'consulta');
 				<label for="modo">Modo:</label>
 				<select style="margin-left: 20px" name="modo">
 						<?php
-						for ($i = 0; $i < count($modo); $i++) {
-							if ($modo[$i] == $modos) {
-								echo "<option value=" . $modo[$i] . " selected>" . $modo[$i] . "</option>";
+						for ($i = 0; $i < count($modos); $i++) {
+							if ($modos[$i] == $modos1) {
+								echo "<option value=" . $modos[$i] . " selected>" . $modos[$i] . "</option>";
 							} else {
-								echo "<option value=" . $modo[$i] . ">" . $modo[$i] . "</option>";
+								echo "<option value=" . $modos[$i] . ">" . $modos[$i] . "</option>";
 							}
 						}
 						?>
@@ -36,5 +40,20 @@ array_push($modo, 'consulta');
 			<button name="boton">Enviar Consulta</button>
 			</ul>
 			</form>
+		</div>
+		<div id="salida" class="box box2">
+			<scroll-container>
+	<?php
+		$commandP=exec("python3.6 conect/conexion.py '".$comando."' ".$modo,$salida);
+		echo $commandP."<br>";
+		echo "<pre>";
+		foreach($salida as &$valor)
+		{
+		    echo $valor.'<br/>';
+		}
+		echo "</pre>";
+	?></scroll-container>
+</div>
+</div>
 </body>
 </html>
