@@ -23,9 +23,9 @@ def ejecucion():
     net_connect = ConnectHandler(**cisco)
     net_connect.enable()
     if modo=="configuracion":
-        output = net_connect.send_config_set(com.split("ñ"))
+        output = net_connect.send_config_set(com.split("**"))
         print(output)
-        
+
     else:
         output = net_connect.send_command(com)
         print(output)
