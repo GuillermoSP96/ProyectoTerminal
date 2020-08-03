@@ -5,10 +5,10 @@ if($boton=="Modificar"){
 	$nombre=$_POST['nombre'];
 	$tipo=$_POST['tipo'];
 	$admin=$_POST['admin'];
+	echo $admin;
 }
 $tipoDisp =  array( );
 array_push($tipoDisp, 'router');
-#array_push($tipoDisp, 'switch');
 array_push($tipoDisp, 'cucme');
 
 require "../conexion.php";
@@ -55,11 +55,10 @@ else{
 				</li>
 				<li>
 					<label for="admin">Administrador:</label>
-					<!-- <input type="text" name="tipo" value="<?=$tipo;?>"><br/><br/>-->
 					<select style="margin-left: 20px" name="admin">
 						<?php
 						for($i=0;$i<count($usuario);$i++)
-							if($usuario[$i]['id']==$admin)
+							if($usuario[$i]['nombre']==$admin)
 								echo "<option value=".$usuario[$i]['id']." selected>".$usuario[$i]['nombre']."</option>";
 							else
 								echo "<option value=".$usuario[$i]['id'].">".$usuario[$i]['nombre']."</option>";

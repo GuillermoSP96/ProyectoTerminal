@@ -6,11 +6,12 @@
 	$tipo= $_POST['tipo'];
 	$admin= $_POST['admin'];
 	if($boton=="Insertar"){
-		$query="insert into dispositivo values (null,'".$nombre."','".$tipo."',".$admin.");";
+		$query="INSERT into webcucme.dispositivo values (null,'$nombre','$tipo',$admin);";
+		echo $query;
 		if($conn->query($query)){
 			header("Location: Dispositivo.php");
-		} 
-		else 
+		}
+		else
 		{
 			echo "Error: ".$conn->error;
 		}
@@ -19,18 +20,18 @@
 	if($boton=="Actualizar")
 	{
 		//$query="update dispositivo set Nombre='".$nombre."',Edad=".$edad.",Genero=".$gen.", Nivel_Estudios=".$nivEst.", EDO_CIVIL_idEDO_CIVIL=".$idEC.", Pais_Nacimiento=".$idpN.", Pais_Origen=".$idpO." where idPERSONA=".$id.";";
-		
+
 		$query ="update dispositivo set nombreD='".$nombre."',tipo ='".$tipo."',Usuario_idusuario=".$admin." where idDispositivo=".$id.";";
 		if($conn->query($query)){
 			header("Location: Dispositivo.php");
-		} 
-		else 
+		}
+		else
 		{
 			echo "Error: ".$conn->error;
 		}
 		$conn->close();
 	}
-	if($boton=="Modificar"){	
+	if($boton=="Modificar"){
 		header("Location: formulario.php");
 		$conn->close();
 	}
@@ -40,7 +41,7 @@
 		header("Location: formulario.php");
 		$conn->close();
 	}
-	if($boton=="Cancelar"){	
+	if($boton=="Cancelar"){
 		header("Location: Dispositivo.php");
 		$conn->close();
 	}

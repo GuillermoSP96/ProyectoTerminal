@@ -9,16 +9,15 @@ if ($boton == "Insertar") {
 if ($boton == "Modificar") {
     $nombre = $_POST['nombre'];
     $tipo   = $_POST['tipo'];
-    //$admin  = $_POST['admin'];
+    $admin  = $_POST['admin'];
 }
 $tipoDisp = array();
 array_push($tipoDisp, 'router');
-array_push($tipoDisp, 'switch');
 array_push($tipoDisp, 'cucme');
 
 require "../conexion.php";
 
-/*$query = "SELECT idusuario, nombreU from usuario;";
+$query = "SELECT idusuario, nombreU from usuario;";
 
 $usuario = array();
 if ($result = $conn->query($query)) {
@@ -30,7 +29,7 @@ if ($result = $conn->query($query)) {
     }
 } else {
     echo "<p>Empty</p>";
-}*/
+}
 ?>
 <!DOCTYPE HTML>
 <html >
@@ -48,20 +47,32 @@ if ($result = $conn->query($query)) {
 			</li>
 			<li>
 				<label for="tipo">Tipo:</label>
-				<!-- <input type="text" name="tipo" value="<?=$tipo;?>"><br/><br/>-->
 				<select style="margin-left: 20px" name="tipo">
 						<?php
-for ($i = 0; $i < count($tipoDisp); $i++) {
-    if ($tipoDisp[$i] == $tipo) {
-        echo "<option value=" . $tipoDisp[$i] . " selected>" . $tipoDisp[$i] . "</option>";
-    } else {
-        echo "<option value=" . $tipoDisp[$i] . ">" . $tipoDisp[$i] . "</option>";
-    }
-}
-
-?>
+            for ($i = 0; $i < count($tipoDisp); $i++) {
+              if ($tipoDisp[$i] == $tipo) {
+                echo "<option value=" . $tipoDisp[$i] . " selected>" . $tipoDisp[$i] . "</option>";
+              } else {
+                echo "<option value=" . $tipoDisp[$i].">" . $tipoDisp[$i] . "</option>";
+              }
+            }
+            ?>
 				</select><br/><br/>
 				</li>
+        <li>
+          <label for="admin">Administrador:</label>
+          <select style="margin-left: 20px" name="admin">
+              <?php
+              for ($i = 0; $i < count($usuario); $i++) {
+                if ($usuario[$i]['id'] == $admin) {
+                  echo "<option value=" . $usuario[$i]['id'] . " selected>" . $usuario[$i]['nombre'] . "</option>";
+                } else {
+                  echo "<option value=" . $usuario[$i]['id'] . ">" . $usuario[$i]['nombre'] . "</option>";
+                }
+              }
+              ?>
+          </select><br/><br/>
+          </li>
 				<button name="boton">Enviar Consulta</button>
 				</ul>
 			</form>

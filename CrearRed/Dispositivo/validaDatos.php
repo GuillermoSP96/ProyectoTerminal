@@ -2,6 +2,7 @@
 $nombre= $_GET['nombre'];
 $tipo= $_GET['tipo'];
 $admin= $_GET['admin'];
+
 require "../conexion.php";
 
 $query = "SELECT idusuario, nombreU from usuario;";
@@ -38,7 +39,8 @@ else{
 			</li>
 			<li>
 				<label for="name">Administrador:</label>
-				<input type="text" name="admin" value="<?php echo $admin;?>" style="width: 30px; text-align: center;margin-left: 20px" readonly/><?echo " ".$usuario[$admin-1]['nombre'];?><br/><br/>
+				<input type="text" name="admin" value="<?php echo $usuario[$admin-1]['id'];?>" style="width: 20px;margin-left: 20px" readonly/>
+				<?php echo $usuario[$admin-1]['nombre'];?><br/><br/>
 			</li>
 
 			<input type="submit" name="boton" value="Insertar" style="width: 80px"  />

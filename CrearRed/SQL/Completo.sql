@@ -6,22 +6,22 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema WebCUCME
+-- Schema webcucme
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `WebCUCME` ;
+DROP SCHEMA IF EXISTS `webcucme` ;
 
 -- -----------------------------------------------------
--- Schema WebCUCME
+-- Schema webcucme
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `WebCUCME` DEFAULT CHARACTER SET utf8 ;
-USE `WebCUCME` ;
+CREATE SCHEMA IF NOT EXISTS `webcucme` DEFAULT CHARACTER SET utf8 ;
+USE `webcucme` ;
 
 -- -----------------------------------------------------
--- Table `WebCUCME`.`Usuario`
+-- Table `webcucme`.`Usuario`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebCUCME`.`Usuario` ;
+DROP TABLE IF EXISTS `webcucme`.`Usuario` ;
 
-CREATE TABLE IF NOT EXISTS `WebCUCME`.`Usuario` (
+CREATE TABLE IF NOT EXISTS `webcucme`.`Usuario` (
   `idusuario` INT NOT NULL AUTO_INCREMENT,
   `nombreU` VARCHAR(45) NOT NULL,
   `contrasenia` VARCHAR(45) NOT NULL,
@@ -31,11 +31,11 @@ COMMENT = 'aqui estan los usuarios';
 
 
 -- -----------------------------------------------------
--- Table `WebCUCME`.`Dispositivo`
+-- Table `webcucme`.`Dispositivo`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebCUCME`.`Dispositivo` ;
+DROP TABLE IF EXISTS `webcucme`.`Dispositivo` ;
 
-CREATE TABLE IF NOT EXISTS `WebCUCME`.`Dispositivo` (
+CREATE TABLE IF NOT EXISTS `webcucme`.`Dispositivo` (
   `idDispositivo` INT NOT NULL AUTO_INCREMENT,
   `nombreD` VARCHAR(45) NULL,
   `tipo` VARCHAR(45) NULL,
@@ -44,18 +44,18 @@ CREATE TABLE IF NOT EXISTS `WebCUCME`.`Dispositivo` (
   INDEX `fk_Dispositivo_Usuario_idx` (`Usuario_idusuario` ASC),
   CONSTRAINT `fk_Dispositivo_Usuario`
     FOREIGN KEY (`Usuario_idusuario`)
-    REFERENCES `WebCUCME`.`Usuario` (`idusuario`)
+    REFERENCES `webcucme`.`Usuario` (`idusuario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebCUCME`.`Interface`
+-- Table `webcucme`.`Interface`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebCUCME`.`Interface` ;
+DROP TABLE IF EXISTS `webcucme`.`Interface` ;
 
-CREATE TABLE IF NOT EXISTS `WebCUCME`.`Interface` (
+CREATE TABLE IF NOT EXISTS `webcucme`.`Interface` (
   `idinterface` INT NOT NULL AUTO_INCREMENT,
   `nombreI` VARCHAR(45) NULL,
   `ip` VARCHAR(15) NULL,
@@ -65,18 +65,18 @@ CREATE TABLE IF NOT EXISTS `WebCUCME`.`Interface` (
   INDEX `fk_Interface_Dispositivo1_idx` (`Dispositivo_idDispositivo` ASC),
   CONSTRAINT `fk_Interface_Dispositivo1`
     FOREIGN KEY (`Dispositivo_idDispositivo`)
-    REFERENCES `WebCUCME`.`Dispositivo` (`idDispositivo`)
+    REFERENCES `webcucme`.`Dispositivo` (`idDispositivo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `WebCUCME`.`Enlace`
+-- Table `webcucme`.`Enlace`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `WebCUCME`.`Enlace` ;
+DROP TABLE IF EXISTS `webcucme`.`Enlace` ;
 
-CREATE TABLE IF NOT EXISTS `WebCUCME`.`Enlace` (
+CREATE TABLE IF NOT EXISTS `webcucme`.`Enlace` (
   `idenlace` INT NOT NULL AUTO_INCREMENT,
   `Interface_idinterface` INT NOT NULL,
   `Interface_idinterface1` INT NOT NULL,
@@ -85,12 +85,12 @@ CREATE TABLE IF NOT EXISTS `WebCUCME`.`Enlace` (
   INDEX `fk_Enlace_Interface2_idx` (`Interface_idinterface1` ASC),
   CONSTRAINT `fk_Enlace_Interface1`
     FOREIGN KEY (`Interface_idinterface`)
-    REFERENCES `WebCUCME`.`Interface` (`idinterface`)
+    REFERENCES `webcucme`.`Interface` (`idinterface`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Enlace_Interface2`
     FOREIGN KEY (`Interface_idinterface1`)
-    REFERENCES `WebCUCME`.`Interface` (`idinterface`)
+    REFERENCES `webcucme`.`Interface` (`idinterface`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -102,7 +102,12 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- Inserciones de prueba
 insert into webcucme.usuario values (null,'admin','admin');
+insert into webcucme.usuario values (null,'memo','memo');
 insert into webcucme.dispositivo values (null,'CUCME','cucme',1);
+insert into webcucme.dispositivo values (null,'R2','cucme',1);
 insert into webcucme.interface values (null,'f 0/1', '192.168.23.1', 'up', 1);
 insert into webcucme.interface values (null,'f 0/0.10', '192.168.1.1', 'up', 1);
 insert into webcucme.interface values (null,'f 0/0.20', '192.168.2.1', 'up', 1);
+insert into webcucme.interface values (null,'s 0/0', '192.168.100.1', 'up', 1);
+insert into webcucme.interface values (null,'s 0/0', '192.168.100.2', 'up', 2);
+insert into webcucme.enlace values (null,4,5);
