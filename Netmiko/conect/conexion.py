@@ -3,23 +3,21 @@ import string
 import sys
 from netmiko import ConnectHandler
 #python3.6 -m pip install netmiko
-cisco = {
-    'device_type': 'cisco_ios',
-    'host': '192.168.23.1',
-    'username': 'cisco',
-    'password': 'cisco',
-    'port': 22,  # optional, defaults to 22
-    'secret': 'cisco'  # optional, defaults to ''
-}
-#connection = ConnectHandler(**cisco)
-#connection.enable()
 
-#output = connection.find_prompt()
 def ejecucion():
     com = sys.argv[1]
     modo=sys.argv[2]
-    #config_commands = ['int f0/1','int f1/0']
-    #with ConnectHandler(** cisco) as net_connect:
+    usuario=str(sys.argv[3])
+    contrasenia=str(sys.argv[4])
+
+    cisco = {
+        'device_type': 'cisco_ios',
+        'host': '192.168.23.1',
+        'username': usuario,
+        'password': contrasenia,
+        'port': 22,  # optional, defaults to 22
+        'secret': contrasenia  # optional, defaults to ''
+    }
     net_connect = ConnectHandler(**cisco)
     net_connect.enable()
     if modo=="configuracion":
@@ -30,5 +28,4 @@ def ejecucion():
         output = net_connect.send_command(com)
         print(output)
 
-#    main()
 ejecucion()

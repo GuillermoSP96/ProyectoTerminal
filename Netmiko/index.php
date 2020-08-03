@@ -1,19 +1,18 @@
 <?php
 require "conect/conexion.php";
 
-#$query = "SELECT * from dispositivo;";
-$query = "SELECT idDispositivo, nombreD, tipo, nombreU, contrasenia from dispositivo inner join usuario where idusuario = Usuario_idusuario;";
+$query = "SELECT * from dispositivo;";
+#$query = "SELECT idDispositivo, nombreD, tipo, nombreU, contrasenia from dispositivo inner join usuario where idusuario = Usuario_idusuario;";
 
 $dispositivos = array();
 if ($result = $conn->query($query)) {
   while($row = $result->fetch_assoc()) {
     $item = array();
-    //idDispositivo, nombreD, tipo, Usuario_idusuario
     $item['id'] = $row['idDispositivo'];
     $item['nombre'] = $row['nombreD'];
     $item['tipo'] = $row['tipo'];
-    $item['usuario'] = $row['nombreU'];
-    $item['pass'] = $row['contrasenia'];
+#    $item['usuario'] = $row['nombreU'];
+#    $item['pass'] = $row['contrasenia'];
 
     array_push($dispositivos, $item);
   }
@@ -27,11 +26,11 @@ $conn->close();
 <html >
 <head>
 	<link rel="stylesheet" href="CSS/estilo.css">
-	<title>Paramiko</title>
+	<title>Netmiko</title>
 	<meta charset="UTF-8"/>
 </head>
 <body>
-	<form id="formu"name="formulario" method="post" style="color: white;" action="configuracion.php">
+	<form id="formu"name="formulario" method="get" style="color: white;" action="configuracion.php">
 		<ul>
 			<li>
 				<label for="id">Dispositivo:</label>

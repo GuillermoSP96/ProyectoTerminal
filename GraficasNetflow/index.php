@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Monitoreo de red</title>
+    <link rel="stylesheet" href="CSS/estilo.css">
     <script src="JS/plotly-latest.min.js"></script>
     <script src="JS/grafica.js" type="text/javascript"></script>
   <body>
