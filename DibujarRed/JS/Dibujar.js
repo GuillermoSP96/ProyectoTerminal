@@ -12,10 +12,6 @@ var d1 = [];
 var d2 = [];
 function p(dispositivos,enlaces){
     var tamDis = dispositivos.length;
-    console.log("tamaño de dispositivos");
-    console.log(tamDis);
-    console.log(typeof tamDis);
-    console.log("tamaño de dispositivos");
     for(var i=0;i<tamDis;i++){
         idD.push(parseInt(dispositivos[i].idDispositivo,10));
         nomD.push(dispositivos[i].nombreD);
@@ -23,29 +19,17 @@ function p(dispositivos,enlaces){
         idUsuD.push(parseInt(dispositivos[i].Usuario_idusuario,10));
     }
     for(var i=0;i<enlaces.length;i++){
-        d1.push(parseInt(enlaces[i].Interface_idinterface,10));
-        d2.push(parseInt(enlaces[i].Interface_idinterface1,10));
+      //disp1, disp2
+        d1.push(parseInt(enlaces[i].disp1,10));
+        d2.push(parseInt(enlaces[i].disp2,10));
     }
-    /*console.log("Valores");
-    console.log(idD);
-    console.log(nomD);
-    console.log(tipoD);
-    console.log(idUsuD);
-    console.log(d1);
-    console.log(d2);*/
     tamD=dispositivos.length;
     tamE=enlaces.length;
-    /*console.log(tamD);
-    console.log(tamE);
-    console.log("fin de valores");
-*/
-    //alert(dispositivos.length);
 }
 // Se llama cuando se carga la API de visualización.
 function draw() {
     // Crear nodos.
     var DIR = 'IMAGEN/';
-    console.log(tamD);
     nodes = [{
         id: 1,
         shape: 'circularImage',
@@ -61,12 +45,8 @@ function draw() {
         });
     }
     // Crear conexión entre nodos
-    console.log(tamE);
     edges = [];
-
     for (var i = 0; i < tamE; i++) {
-        console.log( 'dispositivo 1: '+d1[i]+ ' dispositivo 2: '+d2[i]);
-        //console.log( d2[i]);
         edges.push({
             from: d1[i],
             to: d2[i]

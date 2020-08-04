@@ -40,7 +40,7 @@
 		</button>
 		<table border=1 id="centro" method='post'>
 			<tr>
-				<th>ID</th><th>Dispositivo 1</th><th>Dispositivo 2</th>
+				<th>ID</th><th>Enlace disp1</th><th>Enlace disp2</th>
 				<th>
 					<form name="formulario" method="post" action="formulario.php">
 						<input type='submit' name='boton' value='Insertar'/>

@@ -99,6 +99,15 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+-- Se crean vistas para manejar facil las conecciones entre los dispositivos
+CREATE VIEW vista1 AS SELECT idDispositivo,Interface_idinterface,Interface_idinterface1 FROM WebCUCME.dispositivo inner join WebCUCME.interface inner join WebCUCME.enlace  where Dispositivo_idDispositivo=idDispositivo and Interface_idinterface=idinterface;
+CREATE VIEW vista2 AS SELECT idDispositivo,Interface_idinterface1 FROM WebCUCME.dispositivo inner join WebCUCME.interface inner join WebCUCME.enlace  where Dispositivo_idDispositivo=idDispositivo and Interface_idinterface1=idinterface;
+CREATE VIEW conDispo as SELECT vista1.idDispositivo as disp1, vista2.idDispositivo as disp2 from vista1 inner join vista2 where vista1.Interface_idinterface1=vista2.Interface_idinterface1;
+
+-- vista para mostrar información en tabla de conecciones
+CREATE VIEW vistaCompleta1 AS SELECT idDispositivo, nombreD,idinterface,nombreI,ip,Interface_idinterface1 FROM WebCUCME.dispositivo inner join WebCUCME.interface inner join WebCUCME.enlace  where Dispositivo_idDispositivo=idDispositivo and Interface_idinterface=idinterface;
+CREATE VIEW vistaCompleta2 AS SELECT idDispositivo, nombreD,idinterface,nombreI,ip FROM WebCUCME.dispositivo inner join WebCUCME.interface inner join WebCUCME.enlace  where Dispositivo_idDispositivo=idDispositivo and Interface_idinterface1=idinterface;
+CREATE VIEW vistaCompletaCompleta AS SELECT vistaCompleta1.idDispositivo as idDisp1, vistaCompleta1.nombreD as nomD1, vistaCompleta1.idinterface as idIntDisp1, vistaCompleta1.nombreI as nomInt1, vistaCompleta1.ip as ip1, vistacompleta2.idDispositivo as idDisp2, vistacompleta2.nombreD as nomD2, Interface_idinterface1 as idIntDisp2, vistaCompleta2.nombreI as nomInt2, vistaCompleta2.ip as ip2 from WebCUCME.vistaCompleta1 inner join WebCUCME.vistacompleta2 where Interface_idinterface1=vistacompleta2.idinterface;
 
 -- Inserciones de prueba
 insert into webcucme.usuario values (null,'admin','admin');
@@ -111,3 +120,6 @@ insert into webcucme.interface values (null,'f 0/0.20', '192.168.2.1', 'up', 1);
 insert into webcucme.interface values (null,'s 0/0', '192.168.100.1', 'up', 1);
 insert into webcucme.interface values (null,'s 0/0', '192.168.100.2', 'up', 2);
 insert into webcucme.enlace values (null,4,5);
+
+-- No ejecutar
+-- SELECT idDispositivo,Interface_idinterface, Interface_idinterface1 FROM WebCUCME.dispositivo inner join WebCUCME.interface inner join WebCUCME.enlace  where Dispositivo_idDispositivo=idDispositivo and Interface_idinterface=idinterface;
