@@ -17,6 +17,19 @@
 		}
 		$conn->close();
 	}
+	if($boton=="Borrar"){
+		$query="DELETE FROM webcucme.interface WHERE idinterface = ".$id.";";
+		try {
+			$conn->query($query);
+			header("Location: Interface.php");
+			$conn->close();
+		}
+		catch (Throwable $t)
+		{
+			echo $t;
+		}
+	}
+
 	if($boton=="Actualizar")
 	{
 		$query ="update interface set nombreI='".$nombre."',ip ='".$ip."',estado='".$estado."',Dispositivo_idDispositivo=".$disp." where idinterface=".$id.";";

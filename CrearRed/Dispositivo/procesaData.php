@@ -17,6 +17,17 @@
 		}
 		$conn->close();
 	}
+	if($boton=="Borrar"){
+		$query="DELETE FROM webcucme.dispositivo WHERE idDispositivo = ".$id.";";
+		if($conn->query($query)){
+			header("Location: Dispositivo.php");
+		}
+		else
+		{
+			echo "Error: ".$conn->error;
+		}
+		$conn->close();
+	}
 	if($boton=="Actualizar")
 	{
 		//$query="update dispositivo set Nombre='".$nombre."',Edad=".$edad.",Genero=".$gen.", Nivel_Estudios=".$nivEst.", EDO_CIVIL_idEDO_CIVIL=".$idEC.", Pais_Nacimiento=".$idpN.", Pais_Origen=".$idpO." where idPERSONA=".$id.";";

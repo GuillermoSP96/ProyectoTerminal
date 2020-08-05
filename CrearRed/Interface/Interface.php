@@ -1,7 +1,6 @@
 	<?php
 	require '../conexion.php';
-		//the SQL query to be executed
-	$query = "SELECT * FROM interface;";
+	$query = "SELECT idinterface, nombreI, ip, estado, Dispositivo_idDispositivo, nombreD FROM WebCUCME.interface inner join WebCUCME.dispositivo where Dispositivo_idDispositivo=idDispositivo;";
 		//initialize the array to store the processed data
 	$result = $conn->query($query);
 	$arreglo = array();
@@ -16,6 +15,7 @@
 			$item['ip'] = $row['ip'];
 			$item['estado'] = $row['estado'];
 			$item['disp'] = $row['Dispositivo_idDispositivo'];
+			$item['nombreD'] = $row['nombreD'];
 			 //append the above created object into the main array.
 			array_push($arreglo, $item);
 		}
@@ -40,6 +40,11 @@
 				Inicio
 			</a>
 		</button>
+		<button>
+			<a href="../">
+				Atras
+			</a>
+		</button>
 		<table border=1 id="centro" method='post'>
 			<tr>
 				<th>ID</th><th>Nommbre</th><th>IPv4</th><th>Estado</th><th>Dispositivo</th>
@@ -47,16 +52,15 @@
 					<form name="formulario" method="post" action="formulario.php">
 						<input type='submit' name='boton' value='Insertar'/>
 					</form>
-				</th></tr>
+				</th><th>Borrar</th></tr>
 				<?php
 				for($i=0;$i<count($arreglo);$i++) {
 					echo "<tr>";
-					//idinterface, nombreI, ip, estado, Dispositivo_idDispositivo
 					echo "<td>".$arreglo[$i]['id']."</td>";
 					echo "<td>".$arreglo[$i]['nombre']."</td>";
 					echo "<td>".$arreglo[$i]['ip']."</td>";
 					echo "<td>".$arreglo[$i]['estado']."</td>";
-					echo "<td>".$arreglo[$i]['disp']."</td>";
+					echo "<td>".$arreglo[$i]['nombreD']."</td>";
 					echo "<td>";
 					echo "<form action='validaDatosInterface.php' method='post'>";
 					echo "<input type='hidden' name='id' value='".$arreglo[$i]['id']."'/>";
@@ -65,6 +69,12 @@
 					echo "<input type='hidden' name='estado' value='".$arreglo[$i]['estado']."'/>";
 					echo "<input type='hidden' name='disp' value='".$arreglo[$i]['disp']."'/>";
 					echo "<input type='submit' name='boton' value='Modificar'/>";
+					echo "</form>";
+					echo "</td>";
+					echo "<td>";
+					echo "<form action='procesaData.php' method='post'>";
+					echo "<input type='hidden' name='id' value='".$arreglo[$i]['id']."'/>";
+					echo "<input type='submit' name='boton' value='Borrar'/>";
 					echo "</form>";
 					echo "</td>";
 					echo "</tr>";

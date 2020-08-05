@@ -8,26 +8,37 @@
 		$query="insert into usuario values (null,'".$nombre."','".$pass."');";
 		if($conn->query($query)){
 			header("Location: Usuario.php");
-		} 
-		else 
+		}
+		else
+		{
+			echo "Error: ".$conn->error;
+		}
+		$conn->close();
+	}
+	if($boton=="Borrar"){
+		$query="DELETE FROM webcucme.usuario WHERE idusuario = ".$id.";";
+		if($conn->query($query)){
+			header("Location: Usuario.php");
+		}
+		else
 		{
 			echo "Error: ".$conn->error;
 		}
 		$conn->close();
 	}
 	if($boton=="Actualizar")
-	{		
+	{
 		$query ="update usuario set nombreU='".$nombre."',contrasenia='".$pass."' where idusuario=".$id.";";
 		if($conn->query($query)){
 			header("Location: Usuario.php");
-		} 
-		else 
+		}
+		else
 		{
 			echo "Error: ".$conn->error;
 		}
 		$conn->close();
 	}
-	if($boton=="Modificar"){	
+	if($boton=="Modificar"){
 		header("Location: formulario.php");
 		$conn->close();
 	}
@@ -37,7 +48,7 @@
 		header("Location: formulario.php");
 		$conn->close();
 	}
-	if($boton=="Cancelar"){	
+	if($boton=="Cancelar"){
 		header("Location: Usuario.php");
 		$conn->close();
 	}

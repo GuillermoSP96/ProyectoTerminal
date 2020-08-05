@@ -39,6 +39,11 @@
 				Inicio
 			</a>
 		</button>
+		<button>
+			<a href="../">
+				Atras
+			</a>
+		</button>
 		<table border=1 id="centro" method='post'>
 			<tr>
 				<th>ID</th><th>Nombre</th><th>Tipo</th><th>Administrador</th>
@@ -46,7 +51,7 @@
 					<form name="formulario" method="post" action="formulario.php">
 						<input type='submit' name='boton' value='Insertar'/>
 					</form>
-				</th></tr>
+				</th><th>Borrar</th></tr>
 				<?php
 				for($i=0;$i<count($arreglo);$i++) {
 					echo "<tr>";
@@ -61,6 +66,12 @@
 					echo "<input type='hidden' name='tipo' value='".$arreglo[$i]['tipo']."'/>";
 					echo "<input type='hidden' name='admin' value='".$arreglo[$i]['admin']."'/>";
 					echo "<input type='submit' name='boton' value='Modificar'/>";
+					echo "</form>";
+					echo "</td>";
+					echo "<td>";
+					echo "<form action='procesaData.php' method='post'>";
+					echo "<input type='hidden' name='id' value='".$arreglo[$i]['id']."'/>";
+					echo "<input type='submit' name='boton' value='Borrar'/>";
 					echo "</form>";
 					echo "</td>";
 					echo "</tr>";

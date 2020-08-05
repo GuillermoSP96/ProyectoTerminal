@@ -5,12 +5,27 @@
 	$nombre= $_POST['nombre'];
 	$tipo= $_POST['tipo'];
 	$admin= $_POST['admin'];
+
+	$disp1= $_POST['disp1'];
+	$disp2= $_POST['disp2'];
+
 	if($boton=="Insertar"){
-		$query="insert into dispositivo values (null,'".$nombre."','".$tipo."',".$admin.");";
+		$query="insert into webcucme.enlace values (null,".$disp1.",".$disp2.");";
 		if($conn->query($query)){
-			header("Location: Dispositivo.php");
-		} 
-		else 
+			header("Location: Enlace.php");
+		}
+		else
+		{
+			echo "Error: ".$conn->error;
+		}
+		$conn->close();
+	}
+	if($boton=="Borrar"){
+		$query="DELETE FROM webcucme.enlace WHERE idenlace = ".$id.";";
+		if($conn->query($query)){
+			header("Location: Enlace.php");
+		}
+		else
 		{
 			echo "Error: ".$conn->error;
 		}
@@ -18,19 +33,17 @@
 	}
 	if($boton=="Actualizar")
 	{
-		//$query="update dispositivo set Nombre='".$nombre."',Edad=".$edad.",Genero=".$gen.", Nivel_Estudios=".$nivEst.", EDO_CIVIL_idEDO_CIVIL=".$idEC.", Pais_Nacimiento=".$idpN.", Pais_Origen=".$idpO." where idPERSONA=".$id.";";
-		
-		$query ="update dispositivo set nombreD='".$nombre."',tipo ='".$tipo."',Usuario_idusuario=".$admin." where idDispositivo=".$id.";";
+		$query ="UPDATE enlace set Interface_idinterface=$disp1,Interface_idinterface1=$disp2 where idenlace=$id;";
 		if($conn->query($query)){
-			header("Location: Dispositivo.php");
-		} 
-		else 
+			header("Location: Enlace.php");
+		}
+		else
 		{
 			echo "Error: ".$conn->error;
 		}
 		$conn->close();
 	}
-	if($boton=="Modificar"){	
+	if($boton=="Modificar"){
 		header("Location: formulario.php");
 		$conn->close();
 	}
@@ -40,8 +53,8 @@
 		header("Location: formulario.php");
 		$conn->close();
 	}
-	if($boton=="Cancelar"){	
-		header("Location: Dispositivo.php");
+	if($boton=="Cancelar"){
+		header("Location: Enlace.php");
 		$conn->close();
 	}
 ?>

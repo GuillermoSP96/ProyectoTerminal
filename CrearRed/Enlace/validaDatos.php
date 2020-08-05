@@ -1,6 +1,6 @@
 <?php
-	$disp1= $_GET['disp1'];
-	$disp2= $_GET['disp2'];
+	$disp1= $_GET['idIntDisp1'];
+	$disp2= $_GET['idIntDisp2'];
 ?>
 <!DOCTYPE html>
 <html >

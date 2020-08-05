@@ -1,78 +1,65 @@
 <?php
-$boton=$_POST['boton'];
-if($boton=="Modificar"){
-	$id=$_POST['id'];
-	$disp1=$_POST['disp1'];
-	$disp2=$_POST['disp2'];
-}
-if($boton=="Eliminar"){
-	$id=$_POST['id'];
-}
-$tipoDisp =  array( );
-array_push($tipoDisp, 'router');
-array_push($tipoDisp, 'switch');
-array_push($tipoDisp, 'cucme');
-
-require "../conexion.php";
-
-$query = "SELECT * from enlace;";
-
-$enlace = array();
-if ($result = $conn->query($query)) {
-	while($row = $result->fetch_assoc()) {
-		$item = array();
-		//idenlace, Interface_idinterface, Interface_idinterface1
-		$item['id'] = $row['idenlace'];
-		$item['intE1'] = $row['Interface_idinterface'];
-		$item['intE2'] = $row['Interface_idinterface1'];
-		array_push($enlace, $item);
+	$boton=$_POST['boton'];
+	if($boton=="Modificar"){
+		$id= $_POST['id'];
+		$idIntDisp1= $_POST['idIntDisp1'];
+		$idIntDisp2= $_POST['idIntDisp2'];
 	}
-}
-else{
-	echo "<p>Empty</p>";
-}
+	require '../conexion.php';
+	$query = "SELECT * from dispositivointerfaz;";
+	$result = $conn->query($query);
+	$arreglo = array();
+	if ($result->num_rows > 0) {
+		// nombreD, idinterface, nombreI, ip
+		 while($row = $result->fetch_assoc()) {
+			 $item = array();
+			 $item['nombreD'] = $row['nombreD'];
+			 $item['idinterface'] = $row['idinterface'];
+			 $item['nombreI'] = $row['nombreI'];
+			 $item['ip'] = $row['ip'];
+		 array_push($arreglo, $item);
+		 }
+	 }
+	 else{
+	 		echo "<p>Empty</p>";
+	 }
 ?>
 <html >
-<head>
-	<link rel="stylesheet" href="../CSS/estilo.css">
-</head>
-<body>
-	<form id="formu"name="formulario" method="post" style="color: white;" action="procesaData.php">
-		<ul>
+	<head>
+		<link rel="stylesheet" href="../CSS/estilo.css">
+	</head>
+	<body>
+		<form id="formu"name="formulario" method="post" style="color: white;" action="procesaData.php">
 			<input type="hidden" name="id" value="<?=$id;?>" /><br/>
-			<li>
-				<label for="name">Nombre:</label>
-				<input type="text"   name="nombre" value="<?=$nombre;?>" /><br/><br/>
-			</li>
-			<li>
-				<label for="tipo">Tipo:</label>
-				<!-- <input type="text" name="tipo" value="<?=$tipo;?>"><br/><br/>-->
-				<select name="tipo">
-					<?php
-					for($i=0;$i<count($tipoDisp);$i++)
-						if($tipoDisp[$i]==$tipo)
-							echo "<option value=".$tipoDisp[$i]." selected>".$tipoDisp[$i]."</option>";
-						else
-							echo "<option value=".$tipoDisp[$i].">".$tipoDisp[$i]."</option>";
-						?>
-					</select><br/><br/>
-				</li>
-				<li>
-					<label for="admin">Administrador:</label>
-					<!-- <input type="text" name="tipo" value="<?=$tipo;?>"><br/><br/>-->
-					<select name="admin">
-						<?php
-						for($i=0;$i<count($usuario);$i++)
-							if($usuario[$i]['id']==$admin)
-								echo "<option value=".$usuario[$i]['id']." selected>".$usuario[$i]['nombre']."</option>";
-							else
-								echo "<option value=".$usuario[$i]['id'].">".$usuario[$i]['nombre']."</option>";
-							?>
+				<ul>
+					<input type="hidden" name="id" value="<?=$id;?>" /><br/>
+					<li>
+						<label for="disp1">Interfaz de disp 1:</label>
+						<select style="margin-left: 20px" name="disp1">
+							<?php
+								for($i=0;$i<count($arreglo);$i++)
+								if($arreglo[$i]['idinterface']==$idIntDisp1)
+									echo "<option value=".$arreglo[$i]['idinterface']." selected>".$arreglo[$i]['nombreD']."|".$arreglo[$i]['nombreI']."-->".$arreglo[$i]['ip']."</option>";
+									else
+									echo "<option value=".$arreglo[$i]['idinterface'].">".$arreglo[$i]['nombreD']."|".$arreglo[$i]['nombreI']."-->".$arreglo[$i]['ip']."</option>";
+							 ?>
 						</select><br/><br/>
 					</li>
-					<input type="submit" name="boton" value="Actualizar" style="width: 90px" /><input type="submit" name="boton" value="Cancelar" style="width: 90px; margin-left: 10px"/>
-				</li>
+					<li>
+							<label for="disp2">Interfaz de disp 2:</label>
+							<select style="margin-left: 20px" name="disp2">
+								<?php
+								for($i=0;$i<count($arreglo);$i++)
+								if($arreglo[$i]['idinterface']==$idIntDisp2)
+								echo "<option value=".$arreglo[$i]['idinterface']." selected>".$arreglo[$i]['nombreD']."|".$arreglo[$i]['nombreI']."-->".$arreglo[$i]['ip']."</option>";
+								else
+								echo "<option value=".$arreglo[$i]['idinterface'].">".$arreglo[$i]['nombreD']."|".$arreglo[$i]['nombreI']."-->".$arreglo[$i]['ip']."</option>";
+								?>
+							</select><br/><br/>
+						</li>
+				<input type="submit" name="boton" value="Actualizar" style="width: 90px" />
+				<input type="submit" name="boton" value="Cancelar" style="width: 90px; margin-left: 10px"/>
 			</ul>
 		</form>
 	</body>
-	</html>
+</html>

@@ -9,25 +9,24 @@ $boton=$_POST['boton'];
 		$disp1=$_POST['disp1'];
 		$disp2=$_POST['disp2'];
 	}
-
-require "../conexion.php";
-
-$query = "SELECT * from dispositivo;";
-
-$enlaces = array();
-if ($result = $conn->query($query)) {
-	while($row = $result->fetch_assoc()) {
-		$item = array();
-		// idDispositivo, nombreD, tipo, Usuario_idusuario
-		$item['id'] = $row['idDispositivo'];
-		$item['nombre'] = $row['nombreD'];
-		$item['tipo'] = $row['tipo'];
-		array_push($enlaces, $item);
-	}
-}
-else{
-	echo "<p>Empty</p>";
-}
+	require '../conexion.php';
+	$query = "SELECT * from dispositivointerfaz;";
+	$result = $conn->query($query);
+	$arreglo = array();
+	if ($result->num_rows > 0) {
+		// nombreD, idinterface, nombreI, ip
+		 while($row = $result->fetch_assoc()) {
+			 $item = array();
+			 $item['nombreD'] = $row['nombreD'];
+			 $item['idinterface'] = $row['idinterface'];
+			 $item['nombreI'] = $row['nombreI'];
+			 $item['ip'] = $row['ip'];
+		 array_push($arreglo, $item);
+		 }
+	 }
+	 else{
+	 		echo "<p>Empty</p>";
+	 }
 ?>
 <!DOCTYPE HTML>
 <html >
@@ -40,31 +39,29 @@ else{
 	<form id="formu"name="formulario" method="get" action="validaDatos.php">
 		<ul>
 			<li>
-				<label for="disp1">Dispositivo 1:</label>
-				<select style="margin-left: 20px" name="disp1">
+				<label for="idIntDisp1">Interfaz de disp 1:</label>
+				<select style="margin-left: 20px" name="idIntDisp1">
 					<?php
-					for($i=0;$i<count($enlaces);$i++)
-						if($enlaces[$i]['id']==$disp1)
-							echo "<option value=".$enlaces[$i]['id']." selected>".$enlaces[$i]['nombre']."</option>";
+					for($i=0;$i<count($arreglo);$i++)
+						if($arreglo[$i]['idinterface']==$idIntDisp1)
+							echo "<option value=".$arreglo[$i]['idinterface']." selected>".$arreglo[$i]['nombreD']." | ".$arreglo[$i]['nombreI']."-->".$arreglo[$i]['ip']."</option>";
 						else
-							echo "<option value=".$enlaces[$i]['id'].">".$enlaces[$i]['nombre']."</option>";
+							echo "<option value=".$arreglo[$i]['idinterface'].">".$arreglo[$i]['nombreD']." | ".$arreglo[$i]['nombreI']."-->".$arreglo[$i]['ip']."</option>";
 					?>
 				</select><br/><br/>
 			</li>
 			<li>
-				<label for="disp2">Dispositivo 2:</label>
-				<!-- <input type="text" name="tipo" value="<?=$tipo;?>"><br/><br/>-->
-				<select style="margin-left: 20px" name="disp2">
+				<label for="idIntDisp2">Interfaz de disp 2:</label>
+				<select style="margin-left: 20px" name="idIntDisp2">
 					<?php
-					for($i=0;$i<count($enlaces);$i++)
-						if($enlaces[$i]['id']==$disp2)
-							echo "<option value=".$enlaces[$i]['id']." selected>".$enlaces[$i]['nombre']."</option>";
+					for($i=0;$i<count($arreglo);$i++)
+						if($arreglo[$i]['idinterface']==$idIntDisp2)
+							echo "<option value=".$arreglo[$i]['idinterface']." selected>".$arreglo[$i]['nombreD']." | ".$arreglo[$i]['nombreI']."-->".$arreglo[$i]['ip']."</option>";
 						else
-							echo "<option value=".$enlaces[$i]['id'].">".$enlaces[$i]['nombre']."</option>";
+							echo "<option value=".$arreglo[$i]['idinterface'].">".$arreglo[$i]['nombreD']." | ".$arreglo[$i]['nombreI']."-->".$arreglo[$i]['ip']."</option>";
 					?>
 				</select><br/><br/>
-			</li>
-			<button name="boton">Enviar Consulta</button>
+			</li><button name="boton">Enviar Consulta</button>
 		</ul>
 	</form>
 </body>
