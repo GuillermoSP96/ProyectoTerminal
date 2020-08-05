@@ -12,7 +12,7 @@
           }
         }
         else{
-          echo "<p>no dispositivos</p>";
+          echo "<p>no hay dispositivos</p>";
         }
         $conn->close();
     ?>
@@ -27,7 +27,7 @@
           }
         }
         else{
-          echo "<p>no enlaces</p>";
+          echo "<p>no hay enlaces</p>";
         }
         $conn->close();
     ?>

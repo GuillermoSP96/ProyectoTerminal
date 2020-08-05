@@ -11,9 +11,6 @@ if ($result = $conn->query($query)) {
     $item['id'] = $row['idDispositivo'];
     $item['nombre'] = $row['nombreD'];
     $item['tipo'] = $row['tipo'];
-#    $item['usuario'] = $row['nombreU'];
-#    $item['pass'] = $row['contrasenia'];
-
     array_push($dispositivos, $item);
   }
 }

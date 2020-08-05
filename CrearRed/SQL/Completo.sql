@@ -114,8 +114,9 @@ create view dispositivointerfaz as select nombreD, idinterface, nombreI, ip from
 -- Inserciones de prueba
 insert into webcucme.usuario values (null,'admin','admin');
 insert into webcucme.usuario values (null,'memo','memo');
-insert into webcucme.dispositivo values (null,'CUCME','cucme',1);
-insert into webcucme.dispositivo values (null,'R2','cucme',1);
+insert into webcucme.usuario values (null,'cisco','cisco');
+insert into webcucme.dispositivo values (null,'CUCME','cucme',3);
+insert into webcucme.dispositivo values (null,'R2','router',1);
 insert into webcucme.interface values (null,'f 0/1', '192.168.23.1', 'up', 1);
 insert into webcucme.interface values (null,'f 0/0.10', '192.168.1.1', 'up', 1);
 insert into webcucme.interface values (null,'f 0/0.20', '192.168.2.1', 'up', 1);

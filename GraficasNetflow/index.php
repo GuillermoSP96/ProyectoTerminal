@@ -2,20 +2,20 @@
 <html lang="es" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Monitoreo de red</title>
+    <title>Monitoreo del CUCME</title>
     <link rel="stylesheet" href="CSS/estilo.css">
     <script src="JS/plotly-latest.min.js"></script>
     <script src="JS/grafica.js" type="text/javascript"></script>
+    <script language="javascript">
+        alert('Solo se Monitorea el CUCME ya que solo es de mi interes saber el estado de la red VoIP');
+    </script>
   <body>
     <button>
       <a href="/">
         Inicio
       </a>
     </button>
-    <button>
-      <a href="javascript:location.reload()">Actualizar página</a>
-    </button>
-    <center><h1>Monitoreo de la red</h1></center>
+    <center><h1>Monitoreo del CUCME</h1></center>
     <div id="myDiv1"></div>
     <div id="myDiv2"></div>
     <script>
