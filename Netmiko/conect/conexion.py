@@ -8,9 +8,10 @@ def ejecucion():
     modo=sys.argv[2]
     usuario=str(sys.argv[3])
     contrasenia=str(sys.argv[4])
+    ipHost=str(sys.argv[5])
     cisco = {
         'device_type': 'cisco_ios',
-        'host': '192.168.23.1',
+        'host': ipHost,
         'username': usuario,
         'password': contrasenia,
         'port': 22,  # optional, defaults to 22
@@ -18,7 +19,7 @@ def ejecucion():
     }
     net_connect = ConnectHandler(**cisco)
     net_connect.enable()
-    if modo=="configuracion":
+    if modo=="configuración":
         output = net_connect.send_config_set(com.split("**"))
         print(output)
     else:

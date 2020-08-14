@@ -1,7 +1,8 @@
 
 <?php
-	require "conect/conexion.php";
 	$id = $_GET['id'];
+	$ipHost = $_GET['ip'];
+	require "conect/conexion.php";
 	$query = "SELECT nombreU, contrasenia from dispositivo inner join usuario where idusuario = Usuario_idusuario and idDispositivo = $id;";
 	$dispositivos = array();
 	if ($result = $conn->query($query)) {
@@ -24,7 +25,7 @@
 	$modo= $_GET['modo'];
 	if(empty($comando)){
 		$comando="exit";
-		$modo="configuracion";
+		$modo="configuración";
 	}
 	$user= $dispositivos[0]['usuario'];
 	$pass= $dispositivos[0]['pass'];
@@ -71,14 +72,15 @@
 				</select><br/><br/>
 			</li>
 			<?php echo "<input type='hidden' name='id' value='".$id."'/>"; ?>
-			<button name="boton">Enviar Consulta</button>
+			<?php echo "<input type='hidden' name='ip' value='".$ipHost."'/>"; ?>
+			<button name="boton">Enviar Comando</button>
 			</ul>
 			</form>
 		</div>
 		<div id="salida" class="box box2">
 			<scroll-container>
 	<?php
-		$commandP=exec("python3.6 conect/conexion.py '".$comando."' ".$modo." ".$user." ".$pass." 2>&1",$salida);
+		$commandP=exec("python3.6 conect/conexion.py '".$comando."' ".$modo." ".$user." ".$pass." ".$ipHost." 2>&1",$salida);
 		echo $commandP."<br>";
 		echo "<pre>";
 		foreach($salida as &$valor)
