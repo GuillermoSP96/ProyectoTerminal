@@ -3,7 +3,16 @@ import string
 import sys
 from netmiko import ConnectHandler
 #python3.6 -m pip install netmiko
-def ejecucion():
+def ejecucion(cisco):
+    net_connect = ConnectHandler(**cisco)
+    net_connect.enable()
+    if modo=="consulta":
+        output = net_connect.send_command(com)
+        print(output)
+    else:
+        output = net_connect.send_config_set(com.split("**"))
+        print(output)
+if __name__ == '__main__':
     com = sys.argv[1]
     modo=sys.argv[2]
     usuario=str(sys.argv[3])
@@ -14,16 +23,7 @@ def ejecucion():
         'host': ipHost,
         'username': usuario,
         'password': contrasenia,
-        'port': 22,  # optional, defaults to 22
+        'port': 22,
         'secret': contrasenia
     }
-    net_connect = ConnectHandler(**cisco)
-    net_connect.enable()
-    if modo=="configuración":
-        output = net_connect.send_config_set(com.split("**"))
-        print(output)
-    else:
-        output = net_connect.send_command(com)
-        print(output)
-
-ejecucion()
+    ejecucion(cisco)

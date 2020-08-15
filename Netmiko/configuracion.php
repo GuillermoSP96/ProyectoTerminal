@@ -19,8 +19,9 @@
 	$conn->close();
 
 	$modos = array();
-	array_push($modos, 'configuracion');
+	array_push($modos, 'configuración');
 	array_push($modos, 'consulta');
+
 	$comando= $_GET['comando'];
 	$modo= $_GET['modo'];
 	if(empty($comando)){
@@ -29,6 +30,11 @@
 	}
 	$user= $dispositivos[0]['usuario'];
 	$pass= $dispositivos[0]['pass'];
+	// echo "Comando:".$comando."<br>";
+	// echo "Modo:".$modo."<br>";
+	// echo "IP:".$ipHost."<br>";
+	// echo "usuario:".$user."<br>";
+	// echo "password:".$pass."<br>";
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,7 +86,9 @@
 		<div id="salida" class="box box2">
 			<scroll-container>
 	<?php
-		$commandP=exec("python3.6 conect/conexion.py '".$comando."' '".$modo."' '".$user."' '".$pass."' '".$ipHost."' 2>&1",$salida);
+		$comEnv ="python3.6 conect/conexion.py \"".$comando."\" \"".$modo."\" \"".$user."\" \"".$pass."\" \"".$ipHost."\" 2>&1";
+		$commandP=exec($comEnv,$salida);
+
 		echo $commandP."<br>";
 		echo "<pre>";
 		foreach($salida as &$valor)
