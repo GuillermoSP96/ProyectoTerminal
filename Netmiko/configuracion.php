@@ -80,7 +80,7 @@
 		<div id="salida" class="box box2">
 			<scroll-container>
 	<?php
-		$commandP=exec("python3.6 conect/conexion.py '".$comando."' ".$modo." ".$user." ".$pass." ".$ipHost." 2>&1",$salida);
+		$commandP=exec("python3.6 conect/conexion.py '".$comando."' '".$modo."' '".$user."' '".$pass."' '".$ipHost."' 2>&1",$salida);
 		echo $commandP."<br>";
 		echo "<pre>";
 		foreach($salida as &$valor)
